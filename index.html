@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PIXEL CARD CLASH — The Ultimate Retro Card Game.</title>
+  <meta name="description" content="PIXEL CARD CLASH — The Ultimate Retro Card Game. No subscription, no ads, no data collection. For iPhone, iPad and Mac.">
+  <meta property="og:title" content="Pixel Card Clash">
+  <meta property="og:description" content="The modern card game with the iconic charm of the '70s, '80s, and '90s.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FAF7F2;
+      --warm-white: #F5F0E8;
+      --charcoal: #1A1A1A;
+      --coral: #E8574A;
+      --muted: #8A8070;
+      --border: rgba(0,0,0,0.08);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--charcoal); overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 40px;
+      background: rgba(250,247,242,0.88);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: padding 0.3s ease;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--charcoal); }
+    .nav-logo img { width: 32px; height: 32px; border-radius: 8px; }
+    .nav-logo span { font-family: 'DM Serif Display', serif; font-size: 18px; letter-spacing: -0.3px; }
+    .nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
+    .nav-links a { font-size: 14px; color: var(--muted); text-decoration: none; padding: 7px 14px; border-radius: 100px; transition: color 0.2s, background 0.2s; }
+    .nav-links a:hover { color: var(--charcoal); background: rgba(0,0,0,0.05); }
+    .nav-links .cta-nav { background: var(--charcoal); color: var(--cream); padding: 8px 18px; border-radius: 100px; font-weight: 500; }
+    .nav-links .cta-nav:hover { background: var(--coral); color: #fff; }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 110px 24px 80px; position: relative;
+    }
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(42px, 7vw, 88px);
+      line-height: 1.02; letter-spacing: -2px; color: var(--charcoal);
+      max-width: 780px; margin-bottom: 24px;
+      animation: fadeUp 0.9s 0.1s ease both;
+    }
+    h1 em { font-style: italic; color: var(--coral); }
+
+    .hero-sub {
+      font-size: 18px; font-weight: 300; color: var(--muted);
+      max-width: 480px; line-height: 1.6; margin-bottom: 36px;
+      animation: fadeUp 1s 0.2s ease both;
+    }
+
+    .hero-phone-wrap { margin-bottom: 36px; animation: fadeUp 1s 0.3s ease both; }
+    .hero-phone {
+      width: 240px; border-radius: 36px; display: block;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.20), 0 0 0 1px rgba(0,0,0,0.06);
+    }
+
+    .hero-cta { margin-bottom: 28px; animation: fadeUp 1s 0.4s ease both; }
+    .app-store-link img { height: 52px; border-radius: 10px; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+    .app-store-link img:hover { transform: scale(1.04) translateY(-2px); box-shadow: 0 12px 30px rgba(0,0,0,0.18); }
+
+    .badges { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; justify-content: center; animation: fadeUp 1s 0.5s ease both; }
+    .badge-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); }
+    .badge-item svg { width: 16px; height: 16px; stroke: var(--coral); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .blob { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: -1; }
+    .blob-1 { width: 500px; height: 500px; background: rgba(232,87,74,0.12); top: -100px; right: -150px; }
+    .blob-2 { width: 400px; height: 400px; background: rgba(180,150,100,0.10); bottom: -80px; left: -120px; }
+
+    /* SHARED */
+    section { padding: 100px 24px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--coral); margin-bottom: 16px; }
+    .section-title { font-family: 'DM Serif Display', serif; font-size: clamp(30px, 4vw, 50px); letter-spacing: -1px; line-height: 1.1; margin-bottom: 16px; color: var(--charcoal); }
+    .section-desc { font-size: 17px; font-weight: 300; color: var(--muted); line-height: 1.7; max-width: 520px; }
+
+    /* FEATURES */
+    #features { background: var(--charcoal); }
+    #features .section-label { color: var(--coral); }
+    #features .section-title { color: var(--cream); }
+    #features .section-desc { color: rgba(250,247,242,0.55); }
+
+    .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 60px; }
+
+    .feature-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 28px 24px; transition: transform 0.3s ease, background 0.3s ease; }
+    .feature-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.08); }
+    .feature-icon { width: 44px; height: 44px; background: rgba(232,87,74,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+    .feature-icon svg { width: 22px; height: 22px; stroke: var(--coral); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .feature-card h3 { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--cream); margin-bottom: 10px; }
+    .feature-card p { font-size: 13px; font-weight: 300; color: rgba(250,247,242,0.50); line-height: 1.65; }
+
+    /* SCREENSHOTS */
+    #screenshots { background: var(--warm-white); overflow: hidden; }
+    .screenshots-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 40px; flex-wrap: wrap; }
+    .scroll-hint { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+    .scroll-hint svg { width: 18px; height: 18px; stroke: var(--muted); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+    .gallery-wrap { display: flex; align-items: center; gap: 12px; }
+
+    .gallery-btn {
+      flex-shrink: 0; width: 48px; height: 48px;
+      background: var(--charcoal); color: var(--cream);
+      border: none; border-radius: 50%; font-size: 20px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+      user-select: none; -webkit-user-select: none;
+    }
+    .gallery-btn:hover { background: var(--coral); transform: scale(1.08); }
+
+    .scroll-track {
+      flex: 1; display: flex; gap: 16px; overflow-x: auto;
+      padding-bottom: 16px; scroll-snap-type: x mandatory;
+      scrollbar-width: none; -ms-overflow-style: none; cursor: grab;
+    }
+    .scroll-track:active { cursor: grabbing; }
+    .scroll-track::-webkit-scrollbar { display: none; }
+    .scroll-track img {
+      height: 500px; flex-shrink: 0; border-radius: 28px;
+      scroll-snap-align: start; box-shadow: 0 16px 40px rgba(0,0,0,0.14);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer; user-select: none; -webkit-user-select: none;
+    }
+    .scroll-track img:hover { transform: scale(1.02) translateY(-4px); box-shadow: 0 24px 50px rgba(0,0,0,0.20); }
+
+    /* PRESSKIT */
+    #presskit { background: var(--cream); border-top: 1px solid var(--border); }
+    .presskit-grid { display: flex; gap: 12px; margin-top: 40px; flex-wrap: wrap; }
+    .pk-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border: 1.5px solid var(--charcoal); border-radius: 100px; font-size: 14px; font-weight: 500; color: var(--charcoal); text-decoration: none; transition: background 0.2s, color 0.2s, transform 0.2s; }
+    .pk-btn svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .pk-btn:hover { background: var(--charcoal); color: var(--cream); transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer { background: var(--charcoal); padding: 40px 40px 28px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .footer-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .footer-logo img { width: 28px; height: 28px; border-radius: 7px; opacity: 0.9; }
+    .footer-logo span { font-family: 'DM Serif Display', serif; font-size: 16px; color: var(--cream); opacity: 0.8; }
+    .footer-links { display: flex; gap: 6px; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 13px; color: rgba(250,247,242,0.4); text-decoration: none; padding: 4px 10px; border-radius: 4px; transition: color 0.2s; }
+    .footer-links a:hover { color: rgba(250,247,242,0.85); }
+    .footer-copy { font-size: 12px; color: rgba(250,247,242,0.25); margin-top: 28px; text-align: center; }
+
+    /* LIGHTBOX */
+    #lightbox {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(10,10,10,0.93);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      align-items: center; justify-content: center;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox-img { max-height: 86vh; max-width: 88vw; border-radius: 24px; box-shadow: 0 40px 100px rgba(0,0,0,0.5); animation: popIn 0.25s ease; display: block; }
+    .lb-close { position: fixed; top: 20px; right: 24px; width: 44px; height: 44px; background: rgba(255,255,255,0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; font-size: 22px; transition: background 0.2s; border: none; }
+    .lb-close:hover { background: var(--coral); }
+    .lb-nav { position: fixed; top: 50%; transform: translateY(-50%); display: flex; justify-content: space-between; width: 100%; padding: 0 16px; pointer-events: none; }
+    .lb-btn { pointer-events: all; width: 52px; height: 52px; background: rgba(255,255,255,0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; color: #fff; font-size: 24px; transition: background 0.2s; }
+    .lb-btn:hover { background: var(--coral); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes popIn  { from { opacity: 0; transform: scale(0.92); }     to { opacity: 1; transform: scale(1); } }
+
+    .reveal { opacity: 1; transform: none; transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.hidden { opacity: 0; transform: translateY(32px); }
+    .reveal.hidden.visible { opacity: 1; transform: none; }
+
+    /* TABLET */
+    @media (max-width: 1000px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* MOBILE */
+    @media (max-width: 700px) {
+      nav { padding: 12px 16px; }
+      .nav-links li:not(:last-child) { display: none; }
+      #hero { padding: 90px 16px 60px; }
+      h1 { letter-spacing: -1.5px; }
+      .hero-sub { font-size: 16px; }
+      .hero-phone { width: 190px; border-radius: 28px; }
+      .badges { gap: 10px; }
+      .badge-item { font-size: 12px; }
+      #features { padding: 60px 16px; }
+      .features-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 36px; }
+      .feature-card { padding: 18px 14px; }
+      .feature-card h3 { font-size: 15px; }
+      .feature-card p { font-size: 12px; }
+      .feature-icon { width: 36px; height: 36px; margin-bottom: 12px; border-radius: 10px; }
+      .feature-icon svg { width: 18px; height: 18px; }
+      #screenshots { padding: 60px 16px; }
+      .screenshots-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .scroll-track img { height: 300px; border-radius: 20px; }
+      .gallery-btn { width: 38px; height: 38px; font-size: 16px; }
+      #presskit { padding: 60px 16px; }
+      footer { padding: 32px 16px 24px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 400px) {
+      .features-grid { grid-template-columns: 1fr; }
+      .scroll-track img { height: 260px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="mainNav">
+    <a class="nav-logo" href="#">
+      <img src="images/icon.png" alt="Pixel Card Clash">
+      <span>Pixel Card Clash</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#screenshots">Screenshots</a></li>
+      <li><a href="https://bsky.app/profile/pixelcardclash.bsky.social" target="_blank">BlueSky</a></li>
+      <li><a href="#presskit">Press</a></li>
+      <li><a href="mailto:pixelcardclash@icloud.com" class="cta-nav">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <h1>The Ultimate<br><em>Retro Card Game</em></h1>
+
+    <p class="hero-sub">Play five unique card themes with special game rules.</p>
+
+    <div class="hero-phone-wrap">
+      <img src="images/screenshot1.png" class="hero-phone" alt="App Preview">
+    </div>
+
+    <div class="hero-cta">
+      <a class="app-store-link" href="https://apps.apple.com/us/app/........../id6474692732" target="_blank">
+        <img src="images/app-store-badge.png" alt="Download on the App Store">
+      </a>
+    </div>
+
+    <div class="badges">
+      <span class="badge-item">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        No data collection
+      </span>
+      <span class="badge-item">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+        No ads
+      </span>
+      <span class="badge-item">
+        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        No account needed
+      </span>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="section-inner">
+      <p class="section-label reveal">What makes it different</p>
+      <h2 class="section-title reveal">Designed for anyone who loves the<br>pixelated charm of the '70s, '80s, and '90s.</h2>
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h3>How the Clash works</h3>
+          <p>Compare card values across six categories and challenge your opponent to a Clash. Whoever has the higher value wins the card. Whoever collects all the cards first wins the game.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="8" y="4" width="11" height="16" rx="2"/>
+              <rect x="5" y="7" width="11" height="16" rx="2"/>
+            </svg>
+          </div>
+          <h3>Five unique card themes</h3> 
+          <p>Home Computers, Video Game Consoles, Arcade Classics, Computer Pioneers and Dead Dotcoms.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="4" y="3" width="16" height="18" rx="2"/>
+              <path d="M8 8l1.5 1.5L12 7"/>
+              <line x1="14" y1="8" x2="17" y2="8"/>
+              <path d="M8 13l1.5 1.5L12 12"/>
+              <line x1="14" y1="13" x2="17" y2="13"/>
+            </svg>
+          </div>
+          <h3>Special game rules</h3>
+          <p>Bonus System: Charge up points. Reverse Rounds: Suddenly the lowest value wins! Category Lock: Freeze a category. Comeback Power: Anything is still possible. Pick 1 of 3: Choose one of your top three cards. ...and more</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          </div>
+          <h3>AI or friends</h3>
+          <p>Play against four AI Difficulty Levels OR connect directly with a friend over Wi-Fi. No internet, no server, no account needed — just play!</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3>Achievements & Stats</h3>
+          <p>18 Game Center Achievements and Visual Game Analysis: After every game, see how the cards shifted from round to round. When was the turning point? When was it closest?</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Privacy First</h3>
+          <p>No subscription, no account required, no ads, no data sharing, no tracking.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREENSHOTS -->
+  <section id="screenshots">
+    <div class="section-inner">
+      <div class="screenshots-header">
+        <div>
+          <p class="section-label reveal">App preview</p>
+          <h2 class="section-title reveal">See it in action.</h2>
+        </div>
+        <span class="scroll-hint reveal">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          Use arrows or swipe — click to enlarge
+        </span>
+      </div>
+
+      <div class="gallery-wrap">
+        <button class="gallery-btn" id="galleryPrev" aria-label="Previous">&#8592;</button>
+        <div class="scroll-track" id="scrollTrack">
+          <img src="images/screenshot1.png"  alt="Screenshot 1">
+          <img src="images/screenshot2.png"  alt="Screenshot 2">
+          <img src="images/screenshot3.png"  alt="Screenshot 3">
+          <img src="images/screenshot4.png"  alt="Screenshot 4">
+          <img src="images/screenshot5.png"  alt="Screenshot 5">
+        </div>
+        <button class="gallery-btn" id="galleryNext" aria-label="Next">&#8594;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESSKIT -->
+  <section id="presskit">
+    <div class="section-inner">
+      <p class="section-label reveal">Media</p>
+      <h2 class="section-title reveal">Press kit</h2>
+      <p class="section-desc reveal">Logo and screenshots.</p>
+      <div class="presskit-grid">
+        <a href="presskit/presskit-en.zip" download class="pk-btn reveal">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          English
+        </a>
+        <a href="presskit/presskit-de.zip" download class="pk-btn reveal">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Deutsch
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <a class="footer-logo" href="#">
+        <img src="images/icon.png" alt="icon">
+        <span>Pixel Card Clash</span>
+      </a>
+      <ul class="footer-links">
+        <li><a href="https://bsky.app/profile/pixelcardclash.bsky.social" target="_blank">BlueSky</a></li>
+        <li><a href="PrivacyPolicy.html">Privacy Policy</a></li>
+        <li><a href="TermsOfService.html">Terms of Service</a></li>
+        <li><a href="mailto:pixelcardclash@icloud.com">Contact</a></li>
+      </ul>
+    </div>
+    <p class="footer-copy">&copy; 2026 Pixel Card Clash. All rights reserved.</p>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox">
+    <button class="lb-close" id="lbClose">&times;</button>
+    <img id="lightbox-img" src="" alt="Screenshot">
+    <div class="lb-nav">
+      <button class="lb-btn" id="lbPrev">&#8592;</button>
+      <button class="lb-btn" id="lbNext">&#8594;</button>
+    </div>
+  </div>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    reveals.forEach(el => el.classList.add('hidden'));
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          revealObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    reveals.forEach(el => revealObserver.observe(el));
+
+    // Nav shrink on scroll
+    const mainNav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      mainNav.style.padding = window.scrollY > 40 ? '10px 40px' : '18px 40px';
+    }, { passive: true });
+
+    // Gallery scroll buttons
+    const track = document.getElementById('scrollTrack');
+    document.getElementById('galleryPrev').addEventListener('click', () => {
+      track.scrollBy({ left: -300, behavior: 'smooth' });
+    });
+    document.getElementById('galleryNext').addEventListener('click', () => {
+      track.scrollBy({ left: 300, behavior: 'smooth' });
+    });
+
+    // Drag-to-scroll
+    let isDown = false, startX, scrollLeftPos, didDrag = false;
+    track.addEventListener('mousedown', e => {
+      isDown = true; didDrag = false;
+      track.style.cursor = 'grabbing';
+      startX = e.pageX - track.offsetLeft;
+      scrollLeftPos = track.scrollLeft;
+    });
+    track.addEventListener('mouseleave', () => { isDown = false; track.style.cursor = 'grab'; });
+    track.addEventListener('mouseup',    () => { isDown = false; track.style.cursor = 'grab'; });
+    track.addEventListener('mousemove',  e => {
+      if (!isDown) return;
+      e.preventDefault();
+      const walk = (e.pageX - track.offsetLeft - startX) * 1.2;
+      if (Math.abs(walk) > 5) didDrag = true;
+      track.scrollLeft = scrollLeftPos - walk;
+    });
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lbImg    = document.getElementById('lightbox-img');
+    const allImgs  = Array.from(track.querySelectorAll('img'));
+    let current    = 0;
+
+    function openLb(i)  { current = i; lbImg.src = allImgs[i].src; lightbox.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeLb()  { lightbox.classList.remove('open'); document.body.style.overflow = ''; }
+    function showPrev() { current = (current - 1 + allImgs.length) % allImgs.length; lbImg.src = allImgs[current].src; }
+    function showNext() { current = (current + 1) % allImgs.length; lbImg.src = allImgs[current].src; }
+
+    allImgs.forEach((img, i) => img.addEventListener('click', () => { if (didDrag) { didDrag = false; return; } openLb(i); }));
+    document.getElementById('lbClose').addEventListener('click', closeLb);
+    document.getElementById('lbPrev').addEventListener('click', showPrev);
+    document.getElementById('lbNext').addEventListener('click', showNext);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLb(); });
+    window.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'ArrowLeft')  showPrev();
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'Escape')     closeLb();
+    });
+  </script>
+
+</body>
+</html>
