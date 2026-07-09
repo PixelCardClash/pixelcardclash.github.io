@@ -10,7 +10,6 @@
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Google Fonts: Share Tech Mono für Überschriften und DM Sans für Fließtext -->
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -38,7 +37,6 @@
     }
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--charcoal); }
     .nav-logo img { width: 32px; height: 32px; border-radius: 8px; }
-    /* Logo-Schriftzug verkleinert auf 18px */
     .nav-logo span { font-family: 'Share Tech Mono', monospace; font-size: 18px; letter-spacing: 0px; }
     .nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
     .nav-links a { font-size: 14px; color: var(--muted); text-decoration: none; padding: 7px 14px; border-radius: 100px; transition: color 0.2s, background 0.2s; }
@@ -50,9 +48,8 @@
     #hero {
       min-height: 100vh;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; padding: 110px 24px 80px; position: relative;
+      text-align: center; padding: 130px 24px 80px; position: relative;
     }
-    /* Hauptüberschrift leicht verkleinert für besseren Umbruch */
     h1 {
       font-family: 'Share Tech Mono', monospace;
       font-size: clamp(36px, 6vw, 64px);
@@ -68,56 +65,17 @@
       animation: fadeUp 1s 0.2s ease both;
     }
 
-    .hero-phone-wrap { margin-bottom: 36px; animation: fadeUp 1s 0.3s ease both; }
-    .hero-phone {
-      width: 240px; border-radius: 36px; display: block;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.20), 0 0 0 1px rgba(0,0,0,0.06);
+    /* GALLERY IN HERO */
+    .hero-gallery-container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      animation: fadeUp 1s 0.3s ease both;
     }
-
-    .hero-cta { margin-bottom: 28px; animation: fadeUp 1s 0.4s ease both; }
-    .app-store-link img { height: 52px; border-radius: 10px; transition: transform 0.25s ease, box-shadow 0.25s ease; }
-    .app-store-link img:hover { transform: scale(1.04) translateY(-2px); box-shadow: 0 12px 30px rgba(0,0,0,0.18); }
-
-    .badges { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; justify-content: center; animation: fadeUp 1s 0.5s ease both; }
-    .badge-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); }
-    .badge-item svg { width: 16px; height: 16px; stroke: var(--coral); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-
-    .blob { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: -1; }
-    .blob-1 { width: 500px; height: 500px; background: rgba(232,87,74,0.12); top: -100px; right: -150px; }
-    .blob-2 { width: 400px; height: 400px; background: rgba(180,150,100,0.10); bottom: -80px; left: -120px; }
-
-    /* SHARED */
-    section { padding: 100px 24px; }
-    .section-inner { max-width: 1100px; margin: 0 auto; }
-    .section-label { font-family: 'Share Tech Mono', monospace; font-size: 14px; font-weight: 500; color: var(--coral); margin-bottom: 12px; }
-    /* Sektions-Überschriften auf kompaktere Werte reduziert */
-    .section-title { font-family: 'Share Tech Mono', monospace; font-size: clamp(28px, 3.8vw, 40px); letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 16px; color: var(--charcoal); }
-    .section-desc { font-size: 17px; font-weight: 300; color: var(--muted); line-height: 1.7; max-width: 520px; }
-
-    /* FEATURES */
-    #features { background: var(--charcoal); }
-    #features .section-label { color: var(--coral); }
-    #features .section-title { color: var(--cream); }
-    #features .section-desc { color: rgba(250,247,242,0.55); }
-
-    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 60px; }
-
-    .feature-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 28px 24px; transition: transform 0.3s ease, background 0.3s ease; }
-    .feature-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.08); }
-    .feature-icon { width: 44px; height: 44px; background: rgba(232,87,74,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
-    .feature-icon svg { width: 22px; height: 22px; stroke: var(--coral); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-    /* Titel innerhalb der Feature-Karten dezent verkleinert */
-    .feature-card h3 { font-family: 'Share Tech Mono', monospace; font-size: 18px; color: var(--cream); margin-bottom: 8px; letter-spacing: 0px; }
-    .feature-card p { font-size: 13px; font-weight: 300; color: rgba(250,247,242,0.50); line-height: 1.65; }
-
-    /* SCREENSHOTS */
-    #screenshots { background: var(--warm-white); overflow: hidden; }
-    .screenshots-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 40px; flex-wrap: wrap; }
-    .scroll-hint { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+    .scroll-hint { font-size: 13px; color: var(--muted); display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 20px; }
     .scroll-hint svg { width: 18px; height: 18px; stroke: var(--muted); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-
+    
     .gallery-wrap { display: flex; align-items: center; gap: 12px; }
-
     .gallery-btn {
       flex-shrink: 0; width: 48px; height: 48px;
       background: var(--charcoal); color: var(--cream);
@@ -136,12 +94,46 @@
     .scroll-track:active { cursor: grabbing; }
     .scroll-track::-webkit-scrollbar { display: none; }
     .scroll-track img {
-      height: 500px; flex-shrink: 0; border-radius: 28px;
+      height: 480px; flex-shrink: 0; border-radius: 28px;
       scroll-snap-align: start; box-shadow: 0 16px 40px rgba(0,0,0,0.14);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer; user-select: none; -webkit-user-select: none;
     }
     .scroll-track img:hover { transform: scale(1.02) translateY(-4px); box-shadow: 0 24px 50px rgba(0,0,0,0.20); }
+
+    .hero-cta { margin-top: 36px; margin-bottom: 36px; animation: fadeUp 1s 0.4s ease both; }
+    .app-store-link img { height: 52px; border-radius: 10px; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+    .app-store-link img:hover { transform: scale(1.04) translateY(-2px); box-shadow: 0 12px 30px rgba(0,0,0,0.18); }
+
+    .badges { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; justify-content: center; animation: fadeUp 1s 0.5s ease both; }
+    .badge-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); }
+    .badge-item svg { width: 16px; height: 16px; stroke: var(--coral); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .blob { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: -1; }
+    .blob-1 { width: 500px; height: 500px; background: rgba(232,87,74,0.12); top: -100px; right: -150px; }
+    .blob-2 { width: 400px; height: 400px; background: rgba(180,150,100,0.10); bottom: -80px; left: -120px; }
+
+    /* SHARED */
+    section { padding: 100px 24px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-family: 'Share Tech Mono', monospace; font-size: 14px; font-weight: 500; color: var(--coral); margin-bottom: 12px; }
+    .section-title { font-family: 'Share Tech Mono', monospace; font-size: clamp(28px, 3.8vw, 40px); letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 16px; color: var(--charcoal); }
+    .section-desc { font-size: 17px; font-weight: 300; color: var(--muted); line-height: 1.7; max-width: 520px; }
+
+    /* FEATURES */
+    #features { background: var(--charcoal); }
+    #features .section-label { color: var(--coral); }
+    #features .section-title { color: var(--cream); }
+    #features .section-desc { color: rgba(250,247,242,0.55); }
+
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 60px; }
+
+    .feature-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 28px 24px; transition: transform 0.3s ease, background 0.3s ease; }
+    .feature-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.08); }
+    .feature-icon { width: 44px; height: 44px; background: rgba(232,87,74,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+    .feature-icon svg { width: 22px; height: 22px; stroke: var(--coral); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .feature-card h3 { font-family: 'Share Tech Mono', monospace; font-size: 18px; color: var(--cream); margin-bottom: 8px; letter-spacing: 0px; }
+    .feature-card p { font-size: 13px; font-weight: 300; color: rgba(250,247,242,0.50); line-height: 1.65; }
 
     /* PRESSKIT */
     #presskit { background: var(--cream); border-top: 1px solid var(--border); }
@@ -184,7 +176,7 @@
     .reveal.hidden { opacity: 0; transform: translateY(32px); }
     .reveal.hidden.visible { opacity: 1; transform: none; }
 
-    /* LAYOUT OPTIMIZATION (3 Columns for cleaner look) */
+    /* LAYOUT OPTIMIZATION */
     @media (min-width: 1001px) {
       .features-grid { grid-template-columns: repeat(3, 1fr); }
     }
@@ -198,10 +190,12 @@
     @media (max-width: 700px) {
       nav { padding: 12px 16px; }
       .nav-links li:not(:last-child) { display: none; }
-      #hero { padding: 90px 16px 60px; }
+      #hero { padding: 110px 16px 60px; }
       h1 { font-size: 32px; }
-      .hero-sub { font-size: 16px; }
-      .hero-phone { width: 190px; border-radius: 28px; }
+      .hero-sub { font-size: 16px; margin-bottom: 28px; }
+      .scroll-track img { height: 320px; border-radius: 20px; }
+      .scroll-hint { margin-top: 14px; }
+      .hero-cta { margin-top: 28px; margin-bottom: 28px; }
       .badges { gap: 10px; }
       .badge-item { font-size: 12px; }
       #features { padding: 60px 16px; }
@@ -211,10 +205,6 @@
       .feature-card p { font-size: 12px; }
       .feature-icon { width: 36px; height: 36px; margin-bottom: 12px; border-radius: 10px; }
       .feature-icon svg { width: 18px; height: 18px; }
-      #screenshots { padding: 60px 16px; }
-      .screenshots-header { flex-direction: column; align-items: flex-start; gap: 8px; }
-      .scroll-track img { height: 300px; border-radius: 20px; }
-      .gallery-btn { width: 38px; height: 38px; font-size: 16px; }
       #presskit { padding: 60px 16px; }
       footer { padding: 32px 16px 24px; }
       .footer-inner { flex-direction: column; align-items: flex-start; }
@@ -228,21 +218,18 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav id="mainNav">
     <a class="nav-logo" href="#">
       <img src="images/icon.png" alt="Pixel Card Clash">
       <span>Pixel Card Clash</span>
     </a>
     <ul class="nav-links">
-      <li><a href="#screenshots">Screenshots</a></li>
       <li><a href="https://bsky.app/profile/pixelcardclash.bsky.social" target="_blank">BlueSky</a></li>
       <li><a href="#presskit">Press</a></li>
       <li><a href="mailto:pixelcardclash@icloud.com" class="cta-nav">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- HERO -->
   <section id="hero">
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
@@ -251,8 +238,23 @@
 
     <p class="hero-sub">Retro quartet card battles with unique rules and local multiplayer via Wi-Fi — no internet, no accounts.</p>
 
-    <div class="hero-phone-wrap">
-      <img src="images/screenshot1.png" class="hero-phone" alt="App Preview">
+    <div class="hero-gallery-container" id="hero-gallery">
+      <div class="gallery-wrap">
+        <button class="gallery-btn" id="galleryPrev" aria-label="Previous">&#8592;</button>
+        <div class="scroll-track" id="scrollTrack">
+          <img src="images/screenshot1.png" alt="Screenshot 1">
+          <img src="images/screenshot2.png" alt="Screenshot 2">
+          <img src="images/screenshot3.png" alt="Screenshot 3">
+          <img src="images/screenshot4.png" alt="Screenshot 4">
+          <img src="images/screenshot5.png" alt="Screenshot 5">
+        </div>
+        <button class="gallery-btn" id="galleryNext" aria-label="Next">&#8594;</button>
+      </div>
+
+      <span class="scroll-hint">
+        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        Use arrows or swipe — click to enlarge
+      </span>
     </div>
 
     <div class="hero-cta">
@@ -277,7 +279,6 @@
     </div>
   </section>
 
-  <!-- FEATURES -->
   <section id="features">
     <div class="section-inner">
       <p class="section-label reveal">What makes it different</p>
@@ -338,35 +339,6 @@
     </div>
   </section>
 
-  <!-- SCREENSHOTS -->
-  <section id="screenshots">
-    <div class="section-inner">
-      <div class="screenshots-header">
-        <div>
-          <p class="section-label reveal">App preview</p>
-          <h2 class="section-title reveal">See it in action.</h2>
-        </div>
-        <span class="scroll-hint reveal">
-          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          Use arrows or swipe — click to enlarge
-        </span>
-      </div>
-
-      <div class="gallery-wrap">
-        <button class="gallery-btn" id="galleryPrev" aria-label="Previous">&#8592;</button>
-        <div class="scroll-track" id="scrollTrack">
-          <img src="images/screenshot1.png"  alt="Screenshot 1">
-          <img src="images/screenshot2.png"  alt="Screenshot 2">
-          <img src="images/screenshot3.png"  alt="Screenshot 3">
-          <img src="images/screenshot4.png"  alt="Screenshot 4">
-          <img src="images/screenshot5.png"  alt="Screenshot 5">
-        </div>
-        <button class="gallery-btn" id="galleryNext" aria-label="Next">&#8594;</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRESSKIT -->
   <section id="presskit">
     <div class="section-inner">
       <p class="section-label reveal">Media</p>
@@ -385,7 +357,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
       <a class="footer-logo" href="#">
@@ -402,7 +373,6 @@
     <p class="footer-copy">&copy; 2026 Pixel Card Clash. All rights reserved.</p>
   </footer>
 
-  <!-- LIGHTBOX -->
   <div id="lightbox">
     <button class="lb-close" id="lbClose">&times;</button>
     <img id="lightbox-img" src="" alt="Screenshot">
