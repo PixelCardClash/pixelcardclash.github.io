@@ -1,467 +1,164 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pixel Card Clash — The Ultimate Retro Card Game.</title>
-  <meta name="description" content="Pixel Card Clash — The Ultimate Retro Card Game. No subscription, no ads, no data collection. For iPhone, iPad and Mac.">
-  <meta property="og:title" content="Pixel Card Clash">
-  <meta property="og:description" content="The modern card game with the iconic charm of the '70s, '80s, and '90s.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pixel Card Clash – Retro card duels</title>
+  <meta name="description" content="Pixel Card Clash – the classic top-trumps card duel in pixel-art style. Retro worlds, four rivals with personality, special rules and a Daily Duel. Coming soon for Windows, macOS and Linux.">
+  <meta name="theme-color" content="#0d1221">
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <!-- Vorschau beim Teilen (Bluesky, Mastodon, Messenger …) -->
   <meta property="og:type" content="website">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --cream: #FAF7F2;
-      --warm-white: #F5F0E8;
-      --charcoal: #1A1A1A;
-      --coral: #E8574A;
-      --muted: #8A8070;
-      --border: rgba(0,0,0,0.08);
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--charcoal); overflow-x: hidden; }
-
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 40px;
-      background: rgba(250,247,242,0.88);
-      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      transition: padding 0.3s ease;
-    }
-    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--charcoal); }
-    .nav-logo img { width: 32px; height: 32px; border-radius: 8px; }
-    .nav-logo span { font-family: 'Share Tech Mono', monospace; font-size: 18px; letter-spacing: 0px; }
-    .nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
-    .nav-links a { font-size: 14px; color: var(--muted); text-decoration: none; padding: 7px 14px; border-radius: 100px; transition: color 0.2s, background 0.2s; }
-    .nav-links a:hover { color: var(--charcoal); background: rgba(0,0,0,0.05); }
-    .nav-links .cta-nav { background: var(--charcoal); color: var(--cream); padding: 8px 18px; border-radius: 100px; font-weight: 500; }
-    .nav-links .cta-nav:hover { background: var(--coral); color: #fff; }
-
-    /* HERO */
-    #hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; padding: 130px 24px 80px; position: relative;
-    }
-    h1 {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: clamp(36px, 6vw, 64px);
-      line-height: 1.1; letter-spacing: -0.5px; color: var(--charcoal);
-      max-width: 840px; margin-bottom: 24px;
-      animation: fadeUp 0.9s 0.1s ease both;
-    }
-    h1 em { font-style: normal; color: var(--coral); }
-
-    .hero-sub {
-      font-size: 18px; font-weight: 300; color: var(--muted);
-      max-width: 480px; line-height: 1.6; margin-bottom: 36px;
-      animation: fadeUp 1s 0.2s ease both;
-    }
-
-    /* GALLERY IN HERO */
-    .hero-gallery-container {
-      width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-      animation: fadeUp 1s 0.3s ease both;
-    }
-    .scroll-hint { font-size: 13px; color: var(--muted); display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 20px; }
-    .scroll-hint svg { width: 18px; height: 18px; stroke: var(--muted); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-    
-    .gallery-wrap { display: flex; align-items: center; gap: 12px; }
-    .gallery-btn {
-      flex-shrink: 0; width: 48px; height: 48px;
-      background: var(--charcoal); color: var(--cream);
-      border: none; border-radius: 50%; font-size: 20px;
-      cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: background 0.2s, transform 0.2s;
-      user-select: none; -webkit-user-select: none;
-    }
-    .gallery-btn:hover { background: var(--coral); transform: scale(1.08); }
-
-    .scroll-track {
-      flex: 1; display: flex; gap: 16px; overflow-x: auto;
-      padding-bottom: 16px; scroll-snap-type: x mandatory;
-      scrollbar-width: none; -ms-overflow-style: none; cursor: grab;
-    }
-    .scroll-track:active { cursor: grabbing; }
-    .scroll-track::-webkit-scrollbar { display: none; }
-    .scroll-track img {
-      height: 480px; flex-shrink: 0; border-radius: 28px;
-      scroll-snap-align: start; box-shadow: 0 16px 40px rgba(0,0,0,0.14);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer; user-select: none; -webkit-user-select: none;
-    }
-    .scroll-track img:hover { transform: scale(1.02) translateY(-4px); box-shadow: 0 24px 50px rgba(0,0,0,0.20); }
-
-    .hero-cta { margin-top: 36px; margin-bottom: 36px; animation: fadeUp 1s 0.4s ease both; }
-    .app-store-link img { height: 52px; border-radius: 10px; transition: transform 0.25s ease, box-shadow 0.25s ease; }
-    .app-store-link img:hover { transform: scale(1.04) translateY(-2px); box-shadow: 0 12px 30px rgba(0,0,0,0.18); }
-
-    .badges { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; justify-content: center; animation: fadeUp 1s 0.5s ease both; }
-    .badge-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); }
-    .badge-item svg { width: 16px; height: 16px; stroke: var(--coral); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-
-    .blob { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: -1; }
-    .blob-1 { width: 500px; height: 500px; background: rgba(232,87,74,0.12); top: -100px; right: -150px; }
-    .blob-2 { width: 400px; height: 400px; background: rgba(180,150,100,0.10); bottom: -80px; left: -120px; }
-
-    /* SHARED */
-    section { padding: 100px 24px; }
-    .section-inner { max-width: 1100px; margin: 0 auto; }
-    .section-label { font-family: 'Share Tech Mono', monospace; font-size: 14px; font-weight: 500; color: var(--coral); margin-bottom: 12px; }
-    .section-title { font-family: 'Share Tech Mono', monospace; font-size: clamp(28px, 3.8vw, 40px); letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 16px; color: var(--charcoal); }
-    .section-desc { font-size: 17px; font-weight: 300; color: var(--muted); line-height: 1.7; max-width: 520px; }
-
-    /* FEATURES */
-    #features { background: var(--charcoal); }
-    #features .section-label { color: var(--coral); }
-    #features .section-title { color: var(--cream); }
-    #features .section-desc { color: rgba(250,247,242,0.55); }
-
-    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 60px; }
-
-    .feature-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 28px 24px; transition: transform 0.3s ease, background 0.3s ease; }
-    .feature-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.08); }
-    .feature-icon { width: 44px; height: 44px; background: rgba(232,87,74,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
-    .feature-icon svg { width: 22px; height: 22px; stroke: var(--coral); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-    .feature-card h3 { font-family: 'Share Tech Mono', monospace; font-size: 18px; color: var(--cream); margin-bottom: 8px; letter-spacing: 0px; }
-    .feature-card p { font-size: 13px; font-weight: 300; color: rgba(250,247,242,0.50); line-height: 1.65; }
-
-    /* PRESSKIT */
-    #presskit { background: var(--cream); border-top: 1px solid var(--border); }
-    .presskit-grid { display: flex; gap: 12px; margin-top: 40px; flex-wrap: wrap; }
-    .pk-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border: 1.5px solid var(--charcoal); border-radius: 100px; font-size: 14px; font-weight: 500; color: var(--charcoal); text-decoration: none; transition: background 0.2s, color 0.2s, transform 0.2s; }
-    .pk-btn svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-    .pk-btn:hover { background: var(--charcoal); color: var(--cream); transform: translateY(-2px); }
-
-    /* FOOTER */
-    footer { background: var(--charcoal); padding: 40px 40px 28px; }
-    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
-    .footer-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .footer-logo img { width: 28px; height: 28px; border-radius: 7px; opacity: 0.9; }
-    .footer-logo span { font-family: 'Share Tech Mono', monospace; font-size: 18px; color: var(--cream); opacity: 0.8; }
-    .footer-links { display: flex; gap: 6px; list-style: none; flex-wrap: wrap; }
-    .footer-links a { font-size: 13px; color: rgba(250,247,242,0.4); text-decoration: none; padding: 4px 10px; border-radius: 4px; transition: color 0.2s; }
-    .footer-links a:hover { color: rgba(250,247,242,0.85); }
-    .footer-copy { font-size: 12px; color: rgba(250,247,242,0.25); margin-top: 28px; text-align: center; }
-
-    /* LIGHTBOX */
-    #lightbox {
-      display: none; position: fixed; inset: 0; z-index: 200;
-      background: rgba(10,10,10,0.93);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      align-items: center; justify-content: center;
-    }
-    #lightbox.open { display: flex; }
-    #lightbox-img { max-height: 86vh; max-width: 88vw; border-radius: 24px; box-shadow: 0 40px 100px rgba(0,0,0,0.5); animation: popIn 0.25s ease; display: block; }
-    .lb-close { position: fixed; top: 20px; right: 24px; width: 44px; height: 44px; background: rgba(255,255,255,0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; font-size: 22px; transition: background 0.2s; border: none; }
-    .lb-close:hover { background: var(--coral); }
-    .lb-nav { position: fixed; top: 50%; transform: translateY(-50%); display: flex; justify-content: space-between; width: 100%; padding: 0 16px; pointer-events: none; }
-    .lb-btn { pointer-events: all; width: 52px; height: 52px; background: rgba(255,255,255,0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; color: #fff; font-size: 24px; transition: background 0.2s; }
-    .lb-btn:hover { background: var(--coral); }
-
-    /* ANIMATIONS */
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes popIn  { from { opacity: 0; transform: scale(0.92); }     to { opacity: 1; transform: scale(1); } }
-
-    .reveal { opacity: 1; transform: none; transition: opacity 0.7s ease, transform 0.7s ease; }
-    .reveal.hidden { opacity: 0; transform: translateY(32px); }
-    .reveal.hidden.visible { opacity: 1; transform: none; }
-
-    /* LAYOUT OPTIMIZATION */
-    @media (min-width: 1001px) {
-      .features-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-
-    /* TABLET */
-    @media (max-width: 1000px) {
-      .features-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    /* MOBILE */
-    @media (max-width: 700px) {
-      nav { padding: 12px 16px; }
-      .nav-links li:not(:last-child) { display: none; }
-      #hero { padding: 110px 16px 60px; }
-      h1 { font-size: 32px; }
-      .hero-sub { font-size: 16px; margin-bottom: 28px; }
-      .scroll-track img { height: 320px; border-radius: 20px; }
-      .scroll-hint { margin-top: 14px; }
-      .hero-cta { margin-top: 28px; margin-bottom: 28px; }
-      .badges { gap: 10px; }
-      .badge-item { font-size: 12px; }
-      #features { padding: 60px 16px; }
-      .features-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 36px; }
-      .feature-card { padding: 18px 14px; }
-      .feature-card h3 { font-size: 15px; }
-      .feature-card p { font-size: 12px; }
-      .feature-icon { width: 36px; height: 36px; margin-bottom: 12px; border-radius: 10px; }
-      .feature-icon svg { width: 18px; height: 18px; }
-      #presskit { padding: 60px 16px; }
-      footer { padding: 32px 16px 24px; }
-      .footer-inner { flex-direction: column; align-items: flex-start; }
-    }
-
-    @media (max-width: 400px) {
-      .features-grid { grid-template-columns: 1fr; }
-      .scroll-track img { height: 260px; }
-    }
-  </style>
+  <meta property="og:title" content="Pixel Card Clash – Retro card duels">
+  <meta property="og:description" content="Pick. Compare. CLASH! Retro card duels with four rivals, special rules and a Daily Duel. Coming soon for Windows, macOS and Linux.">
+  <meta property="og:image" content="assets/img/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
 
-  <nav id="mainNav">
-    <a class="nav-logo" href="#">
-      <img src="images/icon.png" alt="Pixel Card Clash">
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Pixel Card Clash">
+      <img src="assets/img/favicon.png" alt="" width="32" height="32">
       <span>Pixel Card Clash</span>
     </a>
-    <ul class="nav-links">
-      <li><a href="https://bsky.app/profile/pixelcardclash.bsky.social" target="_blank">BlueSky</a></li>
-      <li><a href="#presskit">Press</a></li>
-      <li><a href="mailto:pixelcardclash@icloud.com" class="cta-nav">Contact</a></li>
-    </ul>
-  </nav>
-
-  <section id="hero">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-
-    <h1>The Ultimate<br><em>Retro Card Game</em></h1>
-
-    <p class="hero-sub">Retro quartet card battles with unique rules and local multiplayer via Wi-Fi — no internet, no accounts.</p>
-
-    <div class="hero-gallery-container" id="hero-gallery">
-      <div class="gallery-wrap">
-        <button class="gallery-btn" id="galleryPrev" aria-label="Previous">&#8592;</button>
-        <div class="scroll-track" id="scrollTrack">
-          <img src="images/screenshot1.png" alt="Screenshot 1">
-          <img src="images/screenshot2.png" alt="Screenshot 2">
-          <img src="images/screenshot3.png" alt="Screenshot 3">
-          <img src="images/screenshot4.png" alt="Screenshot 4">
-          <img src="images/screenshot5.png" alt="Screenshot 5">
-          <img src="images/screenshot6.png" alt="Screenshot 6">
-          <img src="images/screenshot7.png" alt="Screenshot 7">
-          <img src="images/screenshot8.png" alt="Screenshot 8">
-          <img src="images/screenshot9.png" alt="Screenshot 9">
-          <img src="images/screenshot10.png" alt="Screenshot 10">
-          <img src="images/screenshot11.png" alt="Screenshot 11">
-          <img src="images/screenshot12.png" alt="Screenshot 12">
-          <img src="images/screenshot13.png" alt="Screenshot 13">
-          <img src="images/screenshot14.png" alt="Screenshot 14">
-          <img src="images/screenshot15.png" alt="Screenshot 15">
-        </div>
-        <button class="gallery-btn" id="galleryNext" aria-label="Next">&#8594;</button>
-      </div>
-
-      <span class="scroll-hint">
-        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        Use arrows or swipe — click to enlarge
-      </span>
+    <nav class="nav" aria-label="Main">
+      <a href="#trailer" data-i18n="nav.trailer">Trailer</a>
+      <a href="#screenshots" data-i18n="nav.screens">Screenshots</a>
+      <a href="#features" data-i18n="nav.features">Features</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="de" aria-pressed="false">DE</button>
     </div>
+  </header>
 
-    <div class="hero-cta">
-      <a class="app-store-link" href="https://apps.apple.com/us/app/id6778530981" target="_blank">
-        <img src="images/app-store-badge.png" alt="Download on the App Store">
-      </a>
-    </div>
-
-    <div class="badges">
-      <span class="badge-item">
-        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        No data collection
-      </span>
-      <span class="badge-item">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
-        No ads
-      </span>
-      <span class="badge-item">
-        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        No account needed
-      </span>
-    </div>
-  </section>
-
-  <section id="features">
-    <div class="section-inner">
-      <p class="section-label reveal">What makes it different</p>
-      <h2 class="section-title reveal">Designed for anyone who loves the<br>pixelated charm of the '70s, '80s, and '90s.</h2>
-      <div class="features-grid">
-        <div class="feature-card reveal">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </div>
-          <h3>How the Clash works</h3>
-          <p>Compare card values across six categories and challenge your opponent to a Clash. Whoever has the higher value wins the card. Whoever collects all the cards first wins the game.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="8" y="4" width="11" height="16" rx="2"/>
-              <rect x="5" y="7" width="11" height="16" rx="2"/>
-            </svg>
-          </div>
-          <h3>Five unique card themes</h3> 
-          <p>Home Computers, Video Game Consoles, Arcade Classics, Computer Pioneers and Dead Dotcoms.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="4" y="3" width="16" height="18" rx="2"/>
-              <path d="M8 8l1.5 1.5L12 7"/>
-              <line x1="14" y1="8" x2="17" y2="8"/>
-              <path d="M8 13l1.5 1.5L12 12"/>
-              <line x1="14" y1="13" x2="17" y2="13"/>
-            </svg>
-          </div>
-          <h3>Special game rules</h3>
-          <p>Bonus System: Charge up points. Reverse Rounds: Suddenly the lowest value wins! Category Lock: Freeze a category. Comeback Power: Anything is still possible. Pick 1 of 3: Choose one of your top three cards. ...and more</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-          </div>
-          <h3>AI or friends</h3>
-          <p>Play against four AI Difficulty Levels OR connect directly with a friend over Wi-Fi. No internet, no server, no account needed — just play!</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          </div>
-          <h3>Achievements & Stats</h3>
-          <p>18 Game Center Achievements and Visual Game Analysis: After every game, see how the cards shifted from round to round. When was the turning point? When was it closest?</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <h3>Privacy First</h3>
-          <p>No subscription, no account required, no ads, no data sharing, no tracking.</p>
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <img class="hero-logo" src="assets/img/logo.png" alt="Pixel Card Clash logo" width="480" height="360">
+        <h1>Pixel Card Clash</h1>
+        <p class="lead" data-i18n="hero.lead">The classic card duel in loving pixel art – with retro worlds to collect, four rivals with attitude and special rules that turn every round upside down.</p>
+        <p class="free-note" data-i18n="free.note">Free to play – optional expansions (DLC) add more worlds and online duels.</p>
+        <div class="platforms">
+          <span class="badge-soon" data-i18n="hero.soon">Coming soon</span><span class="badge-free" data-i18n="free.badge">Free to play</span>
+          <span class="platform">Windows</span><span class="platform">macOS</span><span class="platform">Linux</span>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="presskit">
-    <div class="section-inner">
-      <p class="section-label reveal">Media</p>
-      <h2 class="section-title reveal">Press kit</h2>
-      <p class="section-desc reveal">Logo and screenshots.</p>
-      <div class="presskit-grid">
-        <a href="presskit/presskit-en.zip" download class="pk-btn reveal">
-          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          English
+    <!-- Trailer -->
+    <section class="section" id="trailer">
+      <h2 data-i18n="trailer.title">Trailer</h2>
+      <div class="video-wrap">
+        <video id="trailer-video" controls preload="metadata" playsinline poster="assets/img/trailer-poster-en.jpg">
+          <source src="assets/video/trailer_en.mp4" type="video/mp4">
+        </video>
+      </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section class="section" id="screenshots">
+      <h2 data-i18n="shots.title">Screenshots</h2>
+      <p class="hint" data-i18n="shots.hint">Tap a screenshot to enlarge it.</p>
+      <div class="carousel">
+        <button class="car-btn prev" type="button" aria-label="Previous" data-i18n-aria="shots.prev">‹</button>
+        <ul class="car-track" id="car-track"></ul>
+        <button class="car-btn next" type="button" aria-label="Next" data-i18n-aria="shots.next">›</button>
+      </div>
+      <div class="car-dots" id="car-dots" role="tablist"></div>
+    </section>
+
+    <!-- Features -->
+    <section class="section" id="features">
+      <h2 data-i18n="features.title">What awaits you</h2>
+      <div class="grid">
+        <article class="card"><h3 data-i18n="f1.t">Pick. Compare. CLASH!</h3><p data-i18n="f1.d">Tap your strongest category – the higher value takes both cards. Lightning, knockouts and slow-motion finales make every comparison count.</p></article>
+        <article class="card"><h3 data-i18n="f3.t">Four rivals with personality</h3><p data-i18n="f3.d">From cheerful Kiki to ice-cold MAX-9000: every rival plays differently – and has something to say about it.</p>
+          <div class="rivals">
+            <figure><img src="assets/img/rivals/kiki.png" alt="Kiki" width="72" height="72" loading="lazy"><figcaption>Kiki</figcaption></figure>
+            <figure><img src="assets/img/rivals/rudi.png" alt="Rudi" width="72" height="72" loading="lazy"><figcaption>Rudi</figcaption></figure>
+            <figure><img src="assets/img/rivals/platine.png" alt="Platine" width="72" height="72" loading="lazy"><figcaption>Platine</figcaption></figure>
+            <figure><img src="assets/img/rivals/max9000.png" alt="MAX-9000" width="72" height="72" loading="lazy"><figcaption>MAX-9000</figcaption></figure>
+          </div>
+        </article>
+        <article class="card"><h3 data-i18n="f4.t">Special rules shake things up</h3><p data-i18n="f4.d">Low wins, bonus system, One of Three, card thief, critical hit and more – switch them on individually and make every match different.</p></article>
+        <article class="card"><h3 data-i18n="f5.t">Daily Duel &amp; collection</h3><p data-i18n="f5.d">A new duel every day with the same cards for everyone. Earn up to three stars per card and track your records and form.</p></article>
+        <article class="card"><h3 data-i18n="f6.t">Easy to learn</h3><p data-i18n="f6.d">A short practice duel with Kiki explains the basics; special rules are introduced the moment they first appear. Online duels with friends via Steam are available as an expansion (DLC).</p></article>
+        <article class="card card-wide card-free"><span class="free" data-i18n="free.badge">Free to play</span><h3 data-i18n="f2.t">3 retro worlds to collect</h3><p data-i18n="f2.d">The base game is free and already includes three complete worlds with 32 cards each:</p>
+          <ul class="worlds">
+            <li><img src="assets/img/worlds/retro_home_computer.png" alt="" width="48" height="48" loading="lazy"><div><strong data-i18n="w.retro_home_computer.n">Home Computer</strong><span data-i18n="w.retro_home_computer.d">Legendary home computers from the 70s, 80s and early 90s</span></div></li>
+            <li><img src="assets/img/worlds/retro_game_consoles.png" alt="" width="48" height="48" loading="lazy"><div><strong data-i18n="w.retro_game_consoles.n">Retro Game Consoles</strong><span data-i18n="w.retro_game_consoles.d">Great video game consoles from the 70s and 80s</span></div></li>
+            <li><img src="assets/img/worlds/arcade_classics.png" alt="" width="48" height="48" loading="lazy"><div><strong data-i18n="w.arcade_classics.n">Arcade Classics</strong><span data-i18n="w.arcade_classics.d">From pixel pioneers to 3D giants – the golden age of arcades</span></div></li>
+          </ul>
+        </article>
+        <article class="card card-wide"><span class="dlc" data-i18n="dlc">Expansion (DLC)</span><h3 data-i18n="f8.t">3 more retro worlds</h3><p data-i18n="f8.d">Optional expansion with three more invented worlds, each with 32 cards:</p>
+          <ul class="worlds">
+            <li><img src="assets/img/worlds/retro_futurism.png" alt="" width="48" height="48" loading="lazy"><div><strong data-i18n="w.retro_futurism.n">Retro Futurism</strong><span data-i18n="w.retro_futurism.d">Imaginative spaceships, as earlier generations dreamed up the future</span></div></li>
+            <li><img src="assets/img/worlds/retro_superheroes.png" alt="" width="48" height="48" loading="lazy"><div><strong data-i18n="w.retro_superheroes.n">Superheroes</strong><span data-i18n="w.retro_superheroes.d">Masked protectors with incredible powers from four comic eras</span></div></li>
+            <li><img src="assets/img/worlds/retro_bmovie_monsters.png" alt="" width="48" height="48" loading="lazy"><div><strong data-i18n="w.retro_bmovie_monsters.n">B-Movie Monsters</strong><span data-i18n="w.retro_bmovie_monsters.d">Spine-chilling creatures and cult icons from the golden age of B-movie horror</span></div></li>
+          </ul>
+        </article>
+        <article class="card card-wide"><span class="dlc" data-i18n="dlc">Expansion (DLC)</span><h3 data-i18n="f7.t">Duel your friends</h3><p data-i18n="f7.d">Play against real people online via Steam or over your local network.</p>
+          <p class="modes"><span>Steam</span><span data-i18n="mode.lan">Local network</span><span>Windows · macOS · Linux</span></p></article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact" id="contact">
+      <p data-i18n="contact.lead">Questions, feedback or press inquiries? We'd love to hear from you.</p>
+      <div class="cta">
+        <a class="btn btn-ghost js-mail" href="#contact">
+          <svg aria-hidden="true" width="20" height="16" viewBox="0 0 24 19"><path fill="currentColor" d="M2 0h20a2 2 0 0 1 2 2v15a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm10 10.5L22 3.6V2L12 8.8 2 2v1.6z"/></svg>
+          <span data-i18n="contact.mail">Send an email</span>
         </a>
-        <a href="presskit/presskit-de.zip" download class="pk-btn reveal">
-          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Deutsch
+        <a class="btn btn-ghost" href="https://bsky.app/profile/pixelcardclash.bsky.social" target="_blank" rel="noopener">
+          <svg aria-hidden="true" width="20" height="18" viewBox="0 0 600 530"><path fill="currentColor" d="M135.7 44.3C204.5 95.9 278.4 200.6 305.5 256.6c27.1-56 101-160.7 169.8-212.3C524.9 7.1 605.3-21.7 605.3 69.8c0 18.3-10.5 153.5-16.6 175.4-21.3 76.3-99 95.7-168.1 84 120.8 20.6 151.5 88.6 85.2 156.6-126 129.2-181.1-32.4-195.2-73.8-2.6-7.6-3.8-11.1-3.8-8.1 0-3-1.2.5-3.8 8.1-14.1 41.4-69.2 203-195.2 73.8-66.4-68-35.6-136 85.2-156.6-69.1 11.7-146.8-7.7-168.1-84C17.3 223.3 6.8 88.1 6.8 69.8c0-91.5 80.4-62.7 128.9-25.5z"/></svg>
+          <span data-i18n="contact.bsky">Bluesky</span>
         </a>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <footer>
-    <div class="footer-inner">
-      <a class="footer-logo" href="#">
-        <img src="images/icon.png" alt="icon">
-        <span>Pixel Card Clash</span>
-      </a>
-      <ul class="footer-links">
-        <li><a href="https://bsky.app/profile/pixelcardclash.bsky.social" target="_blank">BlueSky</a></li>
-        <li><a href="PrivacyPolicy.html">Privacy Policy</a></li>
-        <li><a href="TermsOfService.html">Terms of Service</a></li>
-        <li><a href="mailto:pixelcardclash@icloud.com">Contact</a></li>
-      </ul>
-    </div>
-    <p class="footer-copy">&copy; 2026 Pixel Card Clash. All rights reserved.</p>
+  <footer class="footer">
+    <p>© 2026 Pixel Card Clash</p>
+    <p class="links">
+      <button type="button" class="link" data-open="imprint" data-i18n="footer.imprint">Imprint</button>
+      <button type="button" class="link" data-open="privacy" data-i18n="footer.privacy">Privacy</button>
+      <button type="button" class="link" data-open="credits" data-i18n="footer.credits">Credits</button>
+    </p>
   </footer>
 
-  <div id="lightbox">
-    <button class="lb-close" id="lbClose">&times;</button>
-    <img id="lightbox-img" src="" alt="Screenshot">
-    <div class="lb-nav">
-      <button class="lb-btn" id="lbPrev">&#8592;</button>
-      <button class="lb-btn" id="lbNext">&#8594;</button>
-    </div>
-  </div>
+  <!-- Lightbox -->
+  <dialog class="lightbox" id="lightbox" aria-label="Screenshot">
+    <button class="lb-close" type="button" aria-label="Close" data-i18n-aria="lb.close">×</button>
+    <button class="lb-nav prev" type="button" aria-label="Previous" data-i18n-aria="shots.prev">‹</button>
+    <figure>
+      <img id="lb-img" alt="">
+      <figcaption id="lb-cap"></figcaption>
+    </figure>
+    <button class="lb-nav next" type="button" aria-label="Next" data-i18n-aria="shots.next">›</button>
+  </dialog>
 
-  <script>
-    // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
-    reveals.forEach(el => el.classList.add('hidden'));
-    const revealObserver = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          revealObserver.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.08 });
-    reveals.forEach(el => revealObserver.observe(el));
+  <!-- Rechtliches -->
+  <dialog class="legal" id="dlg-imprint">
+    <button class="lb-close" type="button" aria-label="Close" data-i18n-aria="lb.close">×</button>
+    <div class="legal-body" data-i18n-html="imprint"></div>
+  </dialog>
+  <dialog class="legal" id="dlg-privacy">
+    <button class="lb-close" type="button" aria-label="Close" data-i18n-aria="lb.close">×</button>
+    <div class="legal-body" data-i18n-html="privacy"></div>
+  </dialog>
+  <dialog class="legal" id="dlg-credits">
+    <button class="lb-close" type="button" aria-label="Close" data-i18n-aria="lb.close">×</button>
+    <div class="legal-body" data-i18n-html="credits"></div>
+  </dialog>
 
-    // Nav shrink on scroll
-    const mainNav = document.getElementById('mainNav');
-    window.addEventListener('scroll', () => {
-      mainNav.style.padding = window.scrollY > 40 ? '10px 40px' : '18px 40px';
-    }, { passive: true });
-
-    // Gallery scroll buttons
-    const track = document.getElementById('scrollTrack');
-    document.getElementById('galleryPrev').addEventListener('click', () => {
-      track.scrollBy({ left: -300, behavior: 'smooth' });
-    });
-    document.getElementById('galleryNext').addEventListener('click', () => {
-      track.scrollBy({ left: 300, behavior: 'smooth' });
-    });
-
-    // Drag-to-scroll
-    let isDown = false, startX, scrollLeftPos, didDrag = false;
-    track.addEventListener('mousedown', e => {
-      isDown = true; didDrag = false;
-      track.style.cursor = 'grabbing';
-      startX = e.pageX - track.offsetLeft;
-      scrollLeftPos = track.scrollLeft;
-    });
-    track.addEventListener('mouseleave', () => { isDown = false; track.style.cursor = 'grab'; });
-    track.addEventListener('mouseup',    () => { isDown = false; track.style.cursor = 'grab'; });
-    track.addEventListener('mousemove',  e => {
-      if (!isDown) return;
-      e.preventDefault();
-      const walk = (e.pageX - track.offsetLeft - startX) * 1.2;
-      if (Math.abs(walk) > 5) didDrag = true;
-      track.scrollLeft = scrollLeftPos - walk;
-    });
-
-    // Lightbox
-    const lightbox = document.getElementById('lightbox');
-    const lbImg    = document.getElementById('lightbox-img');
-    const allImgs  = Array.from(track.querySelectorAll('img'));
-    let current    = 0;
-
-    function openLb(i)  { current = i; lbImg.src = allImgs[i].src; lightbox.classList.add('open'); document.body.style.overflow = 'hidden'; }
-    function closeLb()  { lightbox.classList.remove('open'); document.body.style.overflow = ''; }
-    function showPrev() { current = (current - 1 + allImgs.length) % allImgs.length; lbImg.src = allImgs[current].src; }
-    function showNext() { current = (current + 1) % allImgs.length; lbImg.src = allImgs[current].src; }
-
-    allImgs.forEach((img, i) => img.addEventListener('click', () => { if (didDrag) { didDrag = false; return; } openLb(i); }));
-    document.getElementById('lbClose').addEventListener('click', closeLb);
-    document.getElementById('lbPrev').addEventListener('click', showPrev);
-    document.getElementById('lbNext').addEventListener('click', showNext);
-    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLb(); });
-    window.addEventListener('keydown', e => {
-      if (!lightbox.classList.contains('open')) return;
-      if (e.key === 'ArrowLeft')  showPrev();
-      if (e.key === 'ArrowRight') showNext();
-      if (e.key === 'Escape')     closeLb();
-    });
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
