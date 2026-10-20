@@ -3,9 +3,10 @@
 (() => {
   "use strict";
 
-  const SHOTS = ["01_clash", "02_worlds", "03_rivals", "04_low_wins_bonus", "05_one_of_three",
-    "06_card_thief", "07_collection", "08_daily_duel", "09_analysis", "10_multiplayer",
-    "11_tournament", "12_joker", "13_card_backs"];
+  const SHOTS = ["01_clash", "02_worlds", "03_world_extra", "04_world_extras_overview", "05_rivals",
+    "06_retro_moments", "07_low_wins_bonus", "08_one_of_three", "09_card_thief", "10_joker",
+    "11_card_swap", "12_tempus_fugit", "13_category_lock", "14_collection", "15_daily_duel",
+    "16_analysis", "17_tournament", "18_multiplayer", "19_card_backs", "20_retro_look"];
 
   // E-Mail-Adresse steht nicht im HTML-Quelltext, sondern wird erst im Browser
   // zusammengesetzt — erschwert das automatische Einsammeln durch Spam-Bots.
@@ -23,10 +24,14 @@
       "shots.title": "Screenshots", "shots.hint": "Tap a screenshot to enlarge it.",
       "shots.prev": "Previous screenshot", "shots.next": "Next screenshot", "lb.close": "Close",
       "shots.caps": ["Pick. Compare. CLASH!", "Nine retro worlds – 3 included, 6 more in two theme packs (DLC)",
-        "Four rivals with personality", "Low wins – with a bonus", "One of Three – flip through your top three cards", "Card Thief with a fuse",
+        "Every world has its own extra – here Padi plugs in a second controller", "Nine world extras to unlock",
+        "Four rivals with personality", "Retro moments – spy, fairy, goblin and more",
+        "Low wins – with a bonus", "One of Three – flip through your top three cards", "Card Thief with a fuse",
+        "Jokers – each one wins once", "Card swap – repeat your category at your own risk",
+        "Tempus Fugit – race the clock", "Category lock – block a category for several rounds",
         "Discover every card", "A new duel every day", "Understand every match",
-        "Multiplayer: online via Steam or on your local network (Multiplayer DLC)",
-        "New: the Rival Tournament", "Jokers – each one wins once", "Card backs to unlock"],
+        "New: the Rival Tournament", "Multiplayer: online via Steam or on your local network (Multiplayer DLC)",
+        "Card backs to unlock", "Retro look – “Retro monitor” screen filter and a table that changes its mood"],
       "features.title": "What awaits you",
       "f1.t": "Pick. Compare. CLASH!", "f1.d": "Tap your strongest category – the higher value takes both cards. Lightning, knockouts and slow-motion finales make every comparison count.",
       "f2.t": "3 retro worlds to collect", "f2.d": "The base game is free and already includes three complete worlds with 32 cards each:",
@@ -82,10 +87,14 @@
       "shots.title": "Screenshots", "shots.hint": "Screenshot antippen zum Vergrößern.",
       "shots.prev": "Vorheriger Screenshot", "shots.next": "Nächster Screenshot", "lb.close": "Schließen",
       "shots.caps": ["Wähle. Vergleiche. CLASH!", "Neun Retro-Welten – 3 inklusive, 6 weitere in zwei Themen-Paketen (DLC)",
-        "Vier Rivalen mit Persönlichkeit", "Niedrig gewinnt – mit Bonus", "Eine aus Drei – blättere durch deine drei obersten Karten", "Karten-Dieb mit Zeitzünder",
+        "Jede Welt hat ihr Extra – hier steckt Padi einen zweiten Controller ein", "Neun Welt-Extras zum Freispielen",
+        "Vier Rivalen mit Persönlichkeit", "Retro-Momente – Spion, Fee, Kobold und mehr",
+        "Niedrig gewinnt – mit Bonus", "Eine aus Drei – blättere durch deine drei obersten Karten", "Karten-Dieb mit Zeitzünder",
+        "Joker – jeder gewinnt einmal", "Kartentausch – wer die Kategorie wiederholt, riskiert etwas",
+        "Tempus Fugit – gegen die Uhr", "Kategoriesperre – eine Kategorie für mehrere Runden sperren",
         "Entdecke jede Karte", "Jeden Tag ein neues Duell", "Verstehe jede Partie",
-        "Multiplayer: online über Steam oder im lokalen Netzwerk (Multiplayer DLC)",
-        "Neu: das Rivalen-Turnier", "Joker – jeder gewinnt einmal", "Kartenrücken zum Freispielen"],
+        "Neu: das Rivalen-Turnier", "Multiplayer: online über Steam oder im lokalen Netzwerk (Multiplayer DLC)",
+        "Kartenrücken zum Freispielen", "Retro-Look – Bildschirmfilter „Retro-Monitor“ und ein Spieltisch mit Stimmung"],
       "features.title": "Das erwartet dich",
       "f1.t": "Wähle. Vergleiche. CLASH!", "f1.d": "Tippe deine stärkste Kategorie – der höhere Wert gewinnt beide Karten. Blitze, Schubser und Zeitlupen-Finale machen jeden Vergleich zum Ereignis.",
       "f2.t": "3 Retro-Welten zum Sammeln", "f2.d": "Das Grundspiel ist kostenlos und enthält bereits drei komplette Welten mit je 32 Karten:",
