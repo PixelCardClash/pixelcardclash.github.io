@@ -72,6 +72,11 @@
         <h3>No cookies, no tracking</h3><p>We use no cookies, no analytics and no third-party content. Fonts, images and videos are loaded from this site itself. Your language choice is stored only in your browser's local storage so the page remembers it.</p>
         <h3>Email</h3><p>If you write to us, we use your email address and message only to answer your request (Art. 6(1)(b) and (f) GDPR) and delete them when they are no longer needed.</p>
         <h3>Bluesky</h3><p>The Bluesky link takes you to an external site; its own privacy policy applies there. No data is transferred to Bluesky before you click.</p>
+        <h3>The game “Pixel Card Clash”</h3><p>The following applies to the game itself (for example on Steam). The game stores game progress, settings, achievements and statistics on your device. Pixel Card Clash does not operate any servers of its own, uses no third-party tracking, analytics or advertising services, and we do not create user profiles.</p>
+        <h3>Steam Cloud</h3><p>If you play via Steam and Steam Cloud is enabled for the game, Steam synchronises your save data (profile with statistics, achievements and card album, rule and personal settings such as player name, language and text size, running tournaments and interrupted matches, and stored Steam profile pictures, including the details of online opponents in your statistics) with Valve's servers. This data is processed by Valve Corporation (USA) under its own privacy policy. You can turn Steam Cloud off in Steam for this game or entirely; then all data stays on your device only.</p>
+        <h3>Steam status and leaderboards</h3><p>Via Steam, your friends see what you are currently playing; you can turn this off in the game settings with “Show status to friends”. Results on the Steam leaderboards (Daily Duel, duel score) are stored at Valve together with your Steam name and are visible to other players.</p>
+        <h3>Multiplayer via Steam</h3><p>When you play online, the game stores your opponent's Steam name, Steam ID and Steam profile picture as well as your own Steam profile picture on your device (and, with Steam Cloud, there as well) for the statistics. Steam provides this information; we do not pass it on. “Delete all statistics” in the game removes the stored opponent details and pictures.</p>
+        <h3>Bug reports</h3><p>“Report a bug” in the game opens a prepared email in your email app or copies a report to your clipboard. It only contains technical details (game version, operating system, processor, graphics card, screen size, language, display settings, unlocked content, theme and round of the last match) and, when copied, the last lines of the log, without player name, Steam name or Steam ID. It is only sent if you send the email yourself.</p>
         <h3>Your rights</h3><p>You have the right to access, rectification, erasure, restriction of processing, data portability and objection, and the right to lodge a complaint with a data protection supervisory authority.</p>`,
       credits: `<h2>Credits</h2>
         <p>Trailer music: "Blue Ska" Kevin MacLeod (incompetech.com), licensed under Creative Commons: By Attribution 4.0 – <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">creativecommons.org/licenses/by/4.0</a></p>
@@ -136,6 +141,11 @@
         <h3>Keine Cookies, kein Tracking</h3><p>Wir verwenden keine Cookies, keine Analyse-Werkzeuge und keine Inhalte von Drittanbietern. Schrift, Bilder und Videos werden von dieser Seite selbst geladen. Deine Sprachwahl wird nur im lokalen Speicher deines Browsers abgelegt, damit die Seite sie sich merkt.</p>
         <h3>E-Mail</h3><p>Wenn du uns schreibst, verwenden wir deine E-Mail-Adresse und Nachricht ausschließlich zur Beantwortung deiner Anfrage (Art. 6 Abs. 1 lit. b und f DSGVO) und löschen sie, sobald sie nicht mehr benötigt werden.</p>
         <h3>Bluesky</h3><p>Der Bluesky-Link führt zu einer externen Seite; dort gilt deren Datenschutzerklärung. Vor dem Anklicken werden keine Daten an Bluesky übertragen.</p>
+        <h3>Das Spiel „Pixel Card Clash“</h3><p>Das Folgende gilt für das Spiel selbst (zum Beispiel auf Steam). Das Spiel speichert Spielfortschritt, Einstellungen, Erfolge und Statistiken auf deinem Gerät. Pixel Card Clash betreibt keine eigenen Server, verwendet keine Tracking-, Analyse- oder Werbedienste von Drittanbietern und wir erstellen keine Nutzerprofile.</p>
+        <h3>Steam Cloud</h3><p>Spielst du über Steam und ist Steam Cloud für das Spiel eingeschaltet, gleicht Steam deinen Spielstand (Profil mit Statistik, Erfolgen und Sammelalbum, Regel- und persönliche Einstellungen wie Spielername, Sprache und Textgröße, laufende Turniere und unterbrochene Partien sowie gespeicherte Steam-Profilbilder, auch die Angaben zu Online-Gegnern in deiner Statistik) mit den Servern von Valve ab. Die Daten verarbeitet Valve Corporation (USA) nach seiner eigenen Datenschutzerklärung. Steam Cloud lässt sich in Steam für dieses Spiel oder ganz abschalten; dann bleiben alle Daten nur auf deinem Gerät.</p>
+        <h3>Steam-Status und Bestenlisten</h3><p>Über Steam sehen deine Freunde, was du gerade spielst; das kannst du in den Spieleinstellungen mit „Status für Freunde zeigen“ abschalten. Ergebnisse in den Steam-Bestenlisten (Tages-Duell, Duell-Wertung) werden mit deinem Steam-Namen bei Valve gespeichert und sind für andere Spieler sichtbar.</p>
+        <h3>Multiplayer über Steam</h3><p>Spielst du online, speichert das Spiel für die Statistik auf deinem Gerät (und mit Steam Cloud auch dort) den Steam-Namen, die Steam-ID und das Steam-Profilbild deines Gegners sowie dein eigenes Steam-Profilbild. Diese Angaben stellt Steam bereit; wir geben sie nicht weiter. „Alle Statistiken löschen“ im Spiel entfernt die gespeicherten Gegner-Angaben und -Bilder.</p>
+        <h3>Fehlerberichte</h3><p>„Fehler melden“ im Spiel öffnet eine vorbereitete E-Mail in deinem E-Mail-Programm bzw. kopiert einen Bericht in die Zwischenablage. Er enthält nur technische Angaben (Spielversion, Betriebssystem, Prozessor, Grafikkarte, Bildschirmgröße, Sprache, Anzeige-Einstellungen, freigeschaltete Inhalte, Thema und Runde der letzten Partie) und beim Kopieren die letzten Zeilen des Protokolls, ohne Spielernamen, Steam-Namen und Steam-ID. Gesendet wird nur, wenn du die E-Mail selbst abschickst.</p>
         <h3>Deine Rechte</h3><p>Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch sowie das Recht, dich bei einer Datenschutz-Aufsichtsbehörde zu beschweren.</p>`,
       credits: `<h2>Nachweise</h2>
         <p>Trailer-Musik: "Blue Ska" Kevin MacLeod (incompetech.com), Licensed under Creative Commons: By Attribution 4.0 – <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">creativecommons.org/licenses/by/4.0</a></p>
@@ -270,4 +280,21 @@
   try { initial = localStorage.getItem("pcc-lang"); } catch (e) { /* privater Modus */ }
   if (!initial) initial = (navigator.language || "en").toLowerCase().startsWith("de") ? "de" : "en";
   setLang(initial);
+
+  // Direkte Adressen für Impressum, Datenschutz und Nachweise (z. B. für Steam):
+  // /#imprint, /#privacy, /#credits öffnen das Fenster in der gewählten Sprache,
+  // /#impressum, /#datenschutz, /#nachweise erzwingen Deutsch.
+  const HASH_DIALOGS = {
+    imprint: ["imprint", null], privacy: ["privacy", null], credits: ["credits", null],
+    impressum: ["imprint", "de"], datenschutz: ["privacy", "de"], nachweise: ["credits", "de"],
+  };
+  function openFromHash() {
+    const entry = HASH_DIALOGS[(location.hash || "").replace(/^#/, "").toLowerCase()];
+    if (!entry) return;
+    if (entry[1] && lang !== entry[1]) setLang(entry[1]);
+    const dlg = document.getElementById("dlg-" + entry[0]);
+    if (dlg && !dlg.open) dlg.showModal();
+  }
+  window.addEventListener("hashchange", openFromHash);
+  openFromHash();
 })();
