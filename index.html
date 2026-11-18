@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pixel Card Clash – Retro card duels</title>
+  <meta name="description" content="Pixel Card Clash – the classic top-trumps card duel in pixel-art style. Retro worlds, four rivals with personality, special rules and a Daily Duel. Coming soon for Windows, macOS and Linux.">
+  <meta name="theme-color" content="#0d1221">
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <!-- Vorschau beim Teilen (Bluesky, Mastodon, Messenger …) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Pixel Card Clash – Retro card duels">
+  <meta property="og:description" content="Pick. Compare. CLASH! Retro card duels with four rivals, special rules and a Daily Duel. Coming soon for Windows, macOS and Linux.">
+  <meta property="og:image" content="assets/img/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="assets/fonts/Righteous-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+  <canvas id="sky" aria-hidden="true"></canvas>
+
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Pixel Card Clash">
+      <img src="assets/img/favicon.png" alt="" width="34" height="34">
+      <span>Pixel Card Clash</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#how" data-i18n="nav.how">How to play</a>
+      <a href="#trailer" data-i18n="nav.trailer">Trailer</a>
+      <a href="#screenshots" data-i18n="nav.screens">Screenshots</a>
+      <a href="#features" data-i18n="nav.features">Features</a>
+      <a href="#worlds" data-i18n="nav.worlds">Worlds</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language" data-active="en">
+      <span class="lang-thumb" aria-hidden="true"></span>
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="de" aria-pressed="false">DE</button>
+    </div>
+    <button class="menu-btn" type="button" aria-controls="nav" aria-expanded="false" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-logo-wrap">
+          <span class="burst" aria-hidden="true"></span>
+          <img class="hero-logo" src="assets/img/logo.png" alt="Pixel Card Clash logo" width="480" height="480">
+        </div>
+        <h1>Pixel Card Clash</h1>
+        <p class="tagline" data-i18n="hero.tagline">Pick. Compare. CLASH!</p>
+        <p class="lead" data-i18n="hero.lead">The classic card duel in loving pixel art – with retro worlds to collect, four rivals with attitude and special rules that turn every round upside down.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#trailer">
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg>
+            <span data-i18n="hero.watch">Watch the trailer</span>
+          </a>
+          <a class="btn btn-teal js-steam" href="#" target="_blank" rel="noopener" hidden>
+            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-9.96 9.04l5.35 2.21a2.83 2.83 0 0 1 1.6-.49l2.39-3.46v-.05a3.78 3.78 0 1 1 3.78 3.78h-.09l-3.4 2.43a2.84 2.84 0 0 1-5.62.6L2.3 14.5A10 10 0 1 0 12 2zm-4.28 15.17-1.23-.51a2.13 2.13 0 1 0 1.17-2.8l1.27.53a1.57 1.57 0 1 1-1.2 2.78zm9.47-7.7a2.52 2.52 0 1 0-2.52 2.52 2.52 2.52 0 0 0 2.52-2.52zm-4.4 0a1.89 1.89 0 1 1 1.89 1.89 1.89 1.89 0 0 1-1.9-1.89z"/></svg>
+            <span data-i18n="hero.steam">Wishlist on Steam</span>
+          </a>
+          <a class="btn btn-ghost" href="https://bsky.app/profile/pixelcardclash.bsky.social" target="_blank" rel="noopener">
+            <svg aria-hidden="true" width="20" height="18" viewBox="0 0 600 530"><path fill="currentColor" d="M135.7 44.3C204.5 95.9 278.4 200.6 305.5 256.6c27.1-56 101-160.7 169.8-212.3C524.9 7.1 605.3-21.7 605.3 69.8c0 18.3-10.5 153.5-16.6 175.4-21.3 76.3-99 95.7-168.1 84 120.8 20.6 151.5 88.6 85.2 156.6-126 129.2-181.1-32.4-195.2-73.8-2.6-7.6-3.8-11.1-3.8-8.1 0-3-1.2.5-3.8 8.1-14.1 41.4-69.2 203-195.2 73.8-66.4-68-35.6-136 85.2-156.6-69.1 11.7-146.8-7.7-168.1-84C17.3 223.3 6.8 88.1 6.8 69.8c0-91.5 80.4-62.7 128.9-25.5z"/></svg>
+            <span data-i18n="hero.follow">Follow on Bluesky</span>
+          </a>
+        </div>
+        <div class="platforms">
+          <span class="chip chip-gold" data-i18n="hero.soon">Coming soon</span>
+          <span class="chip chip-free" data-i18n="free.badge">Free to play</span>
+          <span class="chip">Windows</span><span class="chip">macOS</span><span class="chip">Linux</span>
+        </div>
+        <p class="free-note" data-i18n="free.note">Free to play – three optional DLCs add six more worlds and multiplayer.</p>
+      </div>
+      <a class="scroll-hint" href="#how" aria-hidden="true" tabindex="-1"></a>
+    </section>
+
+    <!-- So geht's -->
+    <section class="section" id="how">
+      <h2 class="reveal" data-i18n="how.title">How it works</h2>
+      <p class="section-lead reveal" data-i18n="f1.d">Tap your strongest category – the higher value takes both cards. Lightning, knockouts and slow-motion finales make every comparison count.</p>
+      <ol class="steps">
+        <li class="step reveal"><span class="coin coin-teal">1</span><h3 data-i18n="how.1.t">Pick</h3><p data-i18n="how.1.d">Tap the strongest category on your top card.</p></li>
+        <li class="step reveal"><span class="coin coin-gold">2</span><h3 data-i18n="how.2.t">Compare</h3><p data-i18n="how.2.d">Both cards go head to head with their values.</p></li>
+        <li class="step step-clash reveal"><span class="coin coin-salmon">3</span><h3 data-i18n="how.3.t">CLASH!</h3><p data-i18n="how.3.d">The higher value wins both cards – whoever ends up with all of them wins.</p></li>
+      </ol>
+    </section>
+
+    <!-- Trailer -->
+    <section class="section" id="trailer">
+      <h2 class="reveal" data-i18n="trailer.title">Trailer</h2>
+      <div class="video-frame reveal">
+        <div class="video-wrap">
+          <video id="trailer-video" controls preload="metadata" playsinline poster="assets/img/trailer-poster-en.jpg">
+            <source src="assets/video/trailer_en.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section class="section section-wide" id="screenshots">
+      <h2 class="reveal" data-i18n="shots.title">Screenshots</h2>
+      <p class="section-lead reveal" data-i18n="shots.hint">Tap a screenshot to enlarge it.</p>
+      <div class="carousel">
+        <button class="car-btn prev" type="button" aria-label="Previous" data-i18n-aria="shots.prev">‹</button>
+        <ul class="car-track" id="car-track"></ul>
+        <button class="car-btn next" type="button" aria-label="Next" data-i18n-aria="shots.next">›</button>
+      </div>
+      <div class="car-dots" id="car-dots" role="tablist"></div>
+    </section>
+
+    <!-- Funktionen -->
+    <section class="section" id="features">
+      <h2 class="reveal" data-i18n="features.title">What awaits you</h2>
+      <div class="cards">
+        <article class="gcard tilt reveal"><span class="coin coin-green">94</span><h3 data-i18n="f4.t">Special rules shake things up</h3><p data-i18n="f4.d">Low wins, bonus system, One of Three, card thief with a fuse, card swap, jokers, critical hit and more – switch them on individually and make every match different. Now with retro moments such as the Retro Arcade: a paddle duel in the middle of a match, and the winner's bonus jumps to 100%.</p></article>
+        <article class="gcard tilt reveal"><span class="coin coin-green">88</span><h3 data-i18n="f9.t">New: the Rival Tournament</h3><p data-i18n="f9.d">Beat Kiki, Rudi, Platine and boss MAX-9000 in a row with your own deck. After every win, swap a card and pick a perk – and every rival you beat gives you an extra life.</p></article>
+        <article class="gcard tilt reveal"><span class="coin coin-lime">81</span><h3 data-i18n="f5.t">Daily Duel, challenges &amp; collection</h3><p data-i18n="f5.d">A new duel every day with the same cards for everyone, six handcrafted challenges and a collection with cards still to discover.</p></article>
+        <article class="gcard tilt reveal"><span class="coin coin-gold">72</span><h3 data-i18n="f6.t">Easy to learn</h3><p data-i18n="f6.d">A short practice duel with Kiki explains the basics; special rules are introduced the moment they first appear.</p></article>
+      </div>
+    </section>
+
+    <!-- Rivalen -->
+    <section class="section" id="rivals">
+      <h2 class="reveal" data-i18n="rivals.title">Your rivals</h2>
+      <p class="section-lead reveal" data-i18n="f3.d">From cheerful Kiki to card-counting MAX-9000: every rival plays differently – and has something to say about it.</p>
+      <ul class="rivals">
+        <li class="rival reveal" style="--c: #ff8fb0"><img src="assets/img/rivals/kiki.png" alt="" width="128" height="128" loading="lazy"><strong>Kiki</strong><span class="lvl" data-i18n="rival.kiki.lvl">Easy</span><p data-i18n="rival.kiki.t">Plays from the gut – and has fun doing it.</p></li>
+        <li class="rival reveal" style="--c: #f4a640"><img src="assets/img/rivals/rudi.png" alt="" width="128" height="128" loading="lazy"><strong>Rudi</strong><span class="lvl" data-i18n="rival.rudi.lvl">Medium</span><p data-i18n="rival.rudi.t">Solid tinkerer – knows his best cards.</p></li>
+        <li class="rival reveal" style="--c: #5fc59a"><img src="assets/img/rivals/platine.png" alt="" width="128" height="128" loading="lazy"><strong>Platine</strong><span class="lvl" data-i18n="rival.platine.lvl">Hard</span><p data-i18n="rival.platine.t">Professor Platine watches your every move.</p></li>
+        <li class="rival reveal" style="--c: #6aa8ff"><img src="assets/img/rivals/max9000.png" alt="" width="128" height="128" loading="lazy"><strong>MAX-9000</strong><span class="lvl" data-i18n="rival.max.lvl">Expert</span><p data-i18n="rival.max.t">Counts every card. Forgets nothing.</p></li>
+      </ul>
+    </section>
+
+    <!-- Welten -->
+    <section class="section" id="worlds">
+      <h2 class="reveal" data-i18n="worlds.title">Nine retro worlds</h2>
+      <p class="section-lead reveal" data-i18n="worlds.cards">32 cards per world</p>
+      <div class="packs">
+        <article class="pack pack-free reveal">
+          <span class="tag tag-free" data-i18n="free.badge">Free to play</span>
+          <h3 data-i18n="f2.t">3 retro worlds to collect</h3>
+          <p data-i18n="f2.d">The base game is free and already includes three complete worlds with 32 cards each:</p>
+          <ul class="worlds">
+            <li><img src="assets/img/worlds/retro_home_computer.png" alt="" width="48" height="48" loading="lazy"><div><strong data-i18n="w.retro_home_computer.n">Home Computer</strong><span data-i18n="w.retro_home_computer.d">Legendary home computers from the 70s, 80s and early 90s</span></div></li>
+            <li><img src="assets/img/worlds/retro_game_consoles.png" alt="" width="48" height="48" loading="lazy"><div><strong data-i18n="w.retro_game_consoles.n">Retro Game Consoles</strong><span data-i18n="w.retro_game_consoles.d">Great video game consoles from the 70s and 80s</span></div></li>
+            <li><img src="assets/img/worlds/arcade_classics.png" alt="" width="48" height="48" loading="lazy"><div><strong data-i18n="w.arcade_classics.n">Arcade Classics</strong><span data-i18n="w.arcade_classics.d">From pixel pioneers to 3D giants – the golden age of arcades</span></div></li>
+          </ul>
+        </article>
+        <article class="pack pack-tech reveal">
+          <span class="tag tag-tech" data-i18n="dlc.tech">Future Machines DLC</span>
+          <h3 data-i18n="f8.t">Future Machines: 3 more worlds</h3>
+          <p data-i18n="f8.d">Optional theme pack with three invented worlds, each with 32 cards:</p>
+          <ul class="worlds">
+            <li><img src="assets/img/worlds/retro_futurism.png" alt="" width="48" height="48" loading="lazy"><div><strong data-i18n="w.retro_futurism.n">Retro Futurism</strong><span data-i18n="w.retro_futurism.d">Imaginative spaceships, as earlier generations dreamed up the future</span></div></li>
+            <li><img src="assets/img/worlds/retro_robots.png" alt="" width="48" height="48" loading="lazy"><div><strong data-i18n="w.retro_robots.n">Retro Robots</strong><span data-i18n="w.retro_robots.d">Tin servants, pulp giants and household marvels from the clockwork era to the microchip</span></div></li>
+            <li><img src="assets/img/worlds/alien_tech.png" alt="" width="48" height="48" loading="lazy"><div><strong data-i18n="w.alien_tech.n">Alien Technology</strong><span data-i18n="w.alien_tech.d">Glowing crystals, hovering spheres and bronze star maps – mysterious relics, unearthed 1900–1980</span></div></li>
+          </ul>
+        </article>
+        <article class="pack pack-creature reveal">
+          <span class="tag tag-creature" data-i18n="dlc.creature">Fantastic Creatures DLC</span>
+          <h3 data-i18n="f10.t">Fantastic Creatures: 3 more worlds</h3>
+          <p data-i18n="f10.d">Optional theme pack with three invented worlds, each with 32 cards:</p>
+          <ul class="worlds">
+            <li><img src="assets/img/worlds/retro_superheroes.png" alt="" width="48" height="48" loading="lazy"><div><strong data-i18n="w.retro_superheroes.n">Superheroes</strong><span data-i18n="w.retro_superheroes.d">Masked protectors with incredible powers from four comic eras</span></div></li>
+            <li><img src="assets/img/worlds/retro_bmovie_monsters.png" alt="" width="48" height="48" loading="lazy"><div><strong data-i18n="w.retro_bmovie_monsters.n">B-Movie Monsters</strong><span data-i18n="w.retro_bmovie_monsters.d">Spine-chilling creatures and cult icons from the golden age of B-movie horror</span></div></li>
+            <li><img src="assets/img/worlds/retro_fantasy.png" alt="" width="48" height="48" loading="lazy"><div><strong data-i18n="w.retro_fantasy.n">Retro Fantasy</strong><span data-i18n="w.retro_fantasy.d">Barbarians, sorceresses and dragons – from 30s pulp magazines to 80s game boxes</span></div></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Multiplayer -->
+    <section class="section" id="multiplayer">
+      <article class="multi reveal">
+        <div class="multi-text">
+          <span class="tag tag-multi" data-i18n="dlc.multi">Multiplayer DLC</span>
+          <h2 data-i18n="f7.t">Multiplayer: duel your friends</h2>
+          <p data-i18n="f7.d">Play against real people online via Steam or over your local network.</p>
+          <p class="modes"><span class="chip">Steam</span><span class="chip" data-i18n="mode.lan">Local network</span><span class="chip">Windows · macOS · Linux</span></p>
+          <p class="price-note" data-i18n="price.note">Each DLC is bought separately – get only what you want. Multiplayer with a theme-pack world also needs that pack.</p>
+        </div>
+        <img class="multi-shot" src="assets/img/thumbs/en/18_multiplayer.jpg" alt="" width="640" height="360" loading="lazy" data-shot="18_multiplayer">
+      </article>
+    </section>
+
+    <!-- Kontakt -->
+    <section class="section contact" id="contact">
+      <h2 class="reveal" data-i18n="contact.title">Stay in touch</h2>
+      <p class="section-lead reveal" data-i18n="contact.lead">Questions, feedback or press inquiries? We'd love to hear from you.</p>
+      <div class="cta reveal">
+        <a class="btn btn-primary js-mail" href="#contact">
+          <svg aria-hidden="true" width="20" height="16" viewBox="0 0 24 19"><path fill="currentColor" d="M2 0h20a2 2 0 0 1 2 2v15a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm10 10.5L22 3.6V2L12 8.8 2 2v1.6z"/></svg>
+          <span data-i18n="contact.mail">Send an email</span>
+        </a>
+        <a class="btn btn-ghost" href="https://bsky.app/profile/pixelcardclash.bsky.social" target="_blank" rel="noopener">
+          <svg aria-hidden="true" width="20" height="18" viewBox="0 0 600 530"><path fill="currentColor" d="M135.7 44.3C204.5 95.9 278.4 200.6 305.5 256.6c27.1-56 101-160.7 169.8-212.3C524.9 7.1 605.3-21.7 605.3 69.8c0 18.3-10.5 153.5-16.6 175.4-21.3 76.3-99 95.7-168.1 84 120.8 20.6 151.5 88.6 85.2 156.6-126 129.2-181.1-32.4-195.2-73.8-2.6-7.6-3.8-11.1-3.8-8.1 0-3-1.2.5-3.8 8.1-14.1 41.4-69.2 203-195.2 73.8-66.4-68-35.6-136 85.2-156.6-69.1 11.7-146.8-7.7-168.1-84C17.3 223.3 6.8 88.1 6.8 69.8c0-91.5 80.4-62.7 128.9-25.5z"/></svg>
+          <span data-i18n="contact.bsky">Bluesky</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <img src="assets/img/favicon.png" alt="" width="28" height="28">
+    <p>© 2026 Pixel Card Clash</p>
+    <p class="links">
+      <button type="button" class="link" data-open="imprint" data-i18n="footer.imprint">Imprint</button>
+      <button type="button" class="link" data-open="privacy" data-i18n="footer.privacy">Privacy</button>
+      <button type="button" class="link" data-open="credits" data-i18n="footer.credits">Credits</button>
+    </p>
+  </footer>
+
+  <!-- Lightbox -->
+  <dialog class="lightbox" id="lightbox" aria-label="Screenshot">
+    <button class="lb-close" type="button" aria-label="Close" data-i18n-aria="lb.close">×</button>
+    <button class="lb-nav prev" type="button" aria-label="Previous" data-i18n-aria="shots.prev">‹</button>
+    <figure>
+      <img id="lb-img" alt="">
+      <figcaption id="lb-cap"></figcaption>
+    </figure>
+    <button class="lb-nav next" type="button" aria-label="Next" data-i18n-aria="shots.next">›</button>
+  </dialog>
+
+  <!-- Rechtliches -->
+  <dialog class="legal" id="dlg-imprint">
+    <button class="lb-close" type="button" aria-label="Close" data-i18n-aria="lb.close">×</button>
+    <div class="legal-body" data-i18n-html="imprint"></div>
+  </dialog>
+  <dialog class="legal" id="dlg-privacy">
+    <button class="lb-close" type="button" aria-label="Close" data-i18n-aria="lb.close">×</button>
+    <div class="legal-body" data-i18n-html="privacy"></div>
+  </dialog>
+  <dialog class="legal" id="dlg-credits">
+    <button class="lb-close" type="button" aria-label="Close" data-i18n-aria="lb.close">×</button>
+    <div class="legal-body" data-i18n-html="credits"></div>
+  </dialog>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
