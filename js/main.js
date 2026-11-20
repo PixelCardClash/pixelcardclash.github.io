@@ -7,14 +7,15 @@
   const I18N = window.PCC_I18N;
   const MAIL = window.PCC_MAIL;
 
-  // Steam-Knopf: erst auf true setzen, wenn die Shopseite öffentlich ist.
-  const STEAM_STORE_LIVE = false;
+  // Steam-Knopf: seit 2026-11-19 an (Shopseite veröffentlicht, „Bald erhältlich“).
+  const STEAM_STORE_LIVE = true;
   const STEAM_URL = "https://store.steampowered.com/app/5585760/";
 
   const SHOTS = ["01_clash", "02_worlds", "03_world_extra", "04_world_extras_overview", "05_rivals",
     "06_retro_moments", "07_low_wins_bonus", "08_one_of_three", "09_card_thief", "10_joker",
     "11_card_swap", "12_tempus_fugit", "13_category_lock", "14_collection", "15_daily_duel",
-    "16_analysis", "17_tournament", "18_multiplayer", "19_card_backs", "20_retro_look", "21_retro_arcade"];
+    "16_analysis", "17_tournament", "18_multiplayer", "19_card_backs", "20_retro_look", "21_retro_arcade",
+    "22_mars_landing", "23_text_adventure"];
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let lang = "en";
