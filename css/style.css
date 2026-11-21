@@ -321,3 +321,24 @@ dialog::backdrop { background: rgba(5, 8, 18, .86); backdrop-filter: blur(4px); 
   *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* Alle Funktionen (2026-11-21): aufklappbare Bereiche, Inhalt aus js/feature_list.js */
+.more-link { text-align: center; margin: 1.6em 0 0; }
+.more-link a { color: var(--teal); font-weight: 600; text-decoration: none; }
+.more-link a:hover, .more-link a:focus-visible { text-decoration: underline; }
+.flist-tools { text-align: center; margin: -1em 0 1.4em; }
+.flist { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; align-items: start; }
+.farea { border-radius: var(--radius); background: linear-gradient(180deg, rgba(28, 35, 64, .95), rgba(18, 26, 48, .95)); border: 1px solid var(--line); box-shadow: var(--shadow); }
+.farea summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 12px; padding: 16px 18px; font-family: var(--display); font-size: 1.12rem; color: var(--cream); }
+.farea summary::-webkit-details-marker { display: none; }
+.farea summary::after { content: "+"; margin-left: auto; font-size: 1.4rem; line-height: 1; color: var(--gold); transition: transform .2s; }
+.farea[open] summary::after { transform: rotate(45deg); }
+.farea summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: var(--radius); }
+.farea-n { order: 2; min-width: 1.8em; padding: 1px 7px; border-radius: 999px; background: rgba(255, 238, 204, .1); color: var(--text-dim); font-family: var(--body); font-size: .8rem; text-align: center; }
+.farea summary::after { order: 3; }
+.farea ul { margin: 0; padding: 0 18px 18px 36px; color: var(--text); }
+.farea li { margin: .45em 0; line-height: 1.5; }
+.farea li strong { color: var(--cream); }
+.farea li::marker { color: var(--gold); }
+@media (max-width: 520px) { .flist { grid-template-columns: 1fr; } .farea summary { font-size: 1.02rem; } }
+
