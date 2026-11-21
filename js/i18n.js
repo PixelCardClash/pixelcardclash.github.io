@@ -14,6 +14,8 @@ const I18N = {
     "skip": "Skip to content",
     "nav.how": "How to play", "nav.worlds": "Worlds", "nav.rivals": "Rivals",
     "hero.steam": "Wishlist on Steam",
+    "all.title": "Every feature at a glance", "all.lead": "Everything Pixel Card Clash has to offer – tap an area to open it.",
+    "all.open": "Open all", "all.close": "Close all", "all.link": "See every feature ↓",
     "how.title": "How it works",
     "how.1.t": "Pick", "how.1.d": "Tap the strongest category on your top card.",
     "how.2.t": "Compare", "how.2.d": "Both cards go head to head with their values.",
@@ -93,6 +95,8 @@ const I18N = {
       <p>All product and company names are trademarks of their respective owners; their mention implies no affiliation or endorsement.</p>`,
   },
   de: {
+    "all.title": "Alle Funktionen im Überblick", "all.lead": "Alles, was Pixel Card Clash zu bieten hat – tippe auf einen Bereich, um ihn aufzuklappen.",
+    "all.open": "Alle aufklappen", "all.close": "Alle zuklappen", "all.link": "Alle Funktionen ansehen ↓",
     "skip": "Zum Inhalt springen",
     "nav.how": "So geht’s", "nav.worlds": "Welten", "nav.rivals": "Rivalen",
     "hero.steam": "Auf die Steam-Wunschliste",

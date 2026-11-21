@@ -205,6 +205,45 @@
   const multiShot = document.querySelector(".multi-shot");
   multiShot.addEventListener("click", () => openLightbox(SHOTS.indexOf(multiShot.dataset.shot)));
 
+  // ------------------------------------------------------- Alle Funktionen
+  // Liste aus js/feature_list.js (erzeugt aus promo/FUNKTIONSLISTE.md), je Bereich
+  // ein aufklappbarer Kasten; offene Bereiche bleiben beim Sprachwechsel offen.
+  const flist = document.getElementById("flist");
+  const flistToggle = document.querySelector(".flist-toggle");
+  function buildFeatureList() {
+    const open = [...flist.querySelectorAll("details")].map((d) => d.open);
+    flist.innerHTML = "";
+    FEATURE_LIST[lang].forEach((area, i) => {
+      const box = document.createElement("details");
+      box.className = "farea";
+      box.open = open[i] === true;
+      const head = document.createElement("summary");
+      head.innerHTML = `<span class="farea-t"></span><span class="farea-n">${area.items.length}</span>`;
+      head.querySelector(".farea-t").textContent = area.t;
+      const list = document.createElement("ul");
+      area.items.forEach((item) => {
+        const li = document.createElement("li");
+        li.innerHTML = item;
+        list.appendChild(li);
+      });
+      box.append(head, list);
+      box.addEventListener("toggle", updateFlistToggle);
+      flist.appendChild(box);
+    });
+    updateFlistToggle();
+  }
+  function updateFlistToggle() {
+    const all = [...flist.querySelectorAll("details")];
+    const allOpen = all.length > 0 && all.every((d) => d.open);
+    flistToggle.textContent = I18N[lang][allOpen ? "all.close" : "all.open"];
+    flistToggle.dataset.state = allOpen ? "open" : "closed";
+  }
+  flistToggle.addEventListener("click", () => {
+    const openAll = flistToggle.dataset.state !== "open";
+    flist.querySelectorAll("details").forEach((d) => { d.open = openAll; });
+    updateFlistToggle();
+  });
+
   // ---------------------------------------------------------------- Sprache
   function setLang(next) {
     lang = I18N[next] ? next : "en";
@@ -222,6 +261,7 @@
       video.load();
     }
     buildCarousel();
+    buildFeatureList();
     multiShot.src = `assets/img/thumbs/${lang}/18_multiplayer.jpg`;
     if (lightbox.open) showLightbox(current);
     try { localStorage.setItem("pcc-lang", lang); } catch (e) { /* privater Modus */ }
