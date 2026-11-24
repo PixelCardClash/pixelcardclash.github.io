@@ -37,3 +37,11 @@ Statische Webseite für GitHub Pages (kein Build-Schritt nötig).
 ## Alle Funktionen (2026-11-21)
 
 Abschnitt `#all-features` vor dem Kontakt: je Bereich ein aufklappbarer Kasten (`<details>`), Knopf „Alle aufklappen“, Link „Alle Funktionen ansehen ↓“ unter den Funktionskarten. Der Inhalt steht in `js/feature_list.js` und wird **nicht von Hand** gepflegt: Quelle ist `promo/FUNKTIONSLISTE.md`, danach im Ordner `promo/` `python3 tools/feature_list_js.py` ausführen. Aufgebaut wird die Liste in `main.js` (`buildFeatureList()`, auch beim Sprachwechsel; offene Bereiche bleiben offen), Darstellung am Ende von `css/style.css`.
+
+## Stand 2026-11-23
+
+Sechs Minispiele statt fünf: Bilder 21 (Retro-Arcade) und 22 (Marslandung, nur noch der eigene Lander) neu, **neu 24 Alien Angriff** und **25 Asteroidenhagel** (`shots/`, `thumbs/`, DE/EN; `js/main.js` `SHOTS`, Bildunterschriften in `js/i18n.js`). Funktionskarte „Retro-Arcade“ (`f4.d`) und die Funktionsliste (`js/feature_list.js`, neu erzeugt mit `tools/feature_list_js.py`) nennen sechs Minispiele, ohne „zu zweit an einem Gerät“. Trailer der Webseite (`assets/video/trailer_<lang>.mp4`, 1280 × 720, CRF 30) und Vorschaubilder (`trailer-poster-<lang>.jpg`) neu aus dem Trailer vom 2026-11-23. Lokal geprüft (alle Dateien laden, 25 Bildunterschriften je Sprache, keine Fehler in der Konsole); **noch nicht hochgeladen** — macht der Nutzer selbst.
+
+## Stand 2026-11-24
+
+Texte nach `promo/MARKETING_LEITFADEN.md` überarbeitet (DE/EN): Einleitung unter dem Logo (`hero.lead`) mit der Kernbotschaft „Das Quartett vom Schulhof als Retro-Pixel-Duell – mit Rivalen, die frech werden, und Arcade-Spielen mitten in der Partie“; Funktionskarten neu geordnet (Überraschungen → Tages-Duell → „In einer Minute gelernt“ → Rivalen-Turnier), „Überraschungen, so viele du willst“ (`f4`) endet mit „drück auf ‚Klassisch‘“, das Tages-Duell (`f5`) nennt das Teilen als Kästchen-Raster, `f6` sagt „kein Deckbau, keine lange Einführung“; Meta-Beschreibungen (`description`, `og:description`) und die englischen Ersatztexte im HTML angeglichen. Lokal geprüft (beide Sprachen, keine Fehler in der Konsole); **noch nicht hochgeladen** — macht der Nutzer selbst.
