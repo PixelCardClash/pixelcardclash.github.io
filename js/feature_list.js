@@ -57,7 +57,7 @@ const FEATURE_LIST = {
   {
    "t": "Retro-Arcade",
    "items": [
-    "Fünf Minispiele mitten in der Partie, gegen die KI, zu zweit oder im Netzwerk: Planeten Ping-Pong, Alien Angriff, Meteor Sturm, Asteroidenflug, Marslandung.",
+    "Sechs Minispiele mitten in der Partie, gegen die KI oder im Netzwerk: Planeten Ping-Pong, Alien Angriff, Meteor Sturm, Asteroidenflug, Marslandung, Asteroidenhagel.",
     "Der Sieger bekommt vollen Bonus."
    ]
   },
@@ -207,7 +207,7 @@ const FEATURE_LIST = {
   {
    "t": "Retro arcade",
    "items": [
-    "Five mini-games in the middle of a match, against the AI, two players on one device or online: Planet Ping-Pong, Alien Attack, Meteor Storm, Asteroid Flight, Mars Landing.",
+    "Six mini-games in the middle of a match, against the AI or online: Planet Ping-Pong, Alien Attack, Meteor Storm, Asteroid Flight, Mars Landing, Asteroid Hail.",
     "The winner gets a full bonus."
    ]
   },

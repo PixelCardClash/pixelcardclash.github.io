@@ -15,7 +15,7 @@
     "06_retro_moments", "07_low_wins_bonus", "08_one_of_three", "09_card_thief", "10_joker",
     "11_card_swap", "12_tempus_fugit", "13_category_lock", "14_collection", "15_daily_duel",
     "16_analysis", "17_tournament", "18_multiplayer", "19_card_backs", "20_retro_look", "21_retro_arcade",
-    "22_mars_landing", "23_text_adventure"];
+    "22_mars_landing", "23_text_adventure", "24_alien_attack", "25_asteroid_hail"];
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let lang = "en";
